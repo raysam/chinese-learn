@@ -3,9 +3,6 @@ const styles = theme => ({
 		flexGrow: 1,
 		color: "#ffffff"
 	},
-	menuButton: {
-		marginRight: 20
-	},
 	title: {
 		flexGrow: 1
 	},
