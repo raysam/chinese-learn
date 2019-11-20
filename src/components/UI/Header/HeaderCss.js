@@ -6,6 +6,10 @@ const styles = theme => ({
 	title: {
 		flexGrow: 1
 	},
+	logoLink: {
+		display: "inline-block",
+		verticalAlign: "middle"
+	},
 	imgSmall: {
 		display: "block",
 		width: 150

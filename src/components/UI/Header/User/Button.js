@@ -6,14 +6,14 @@ import MenuItem from "@material-ui/core/MenuItem";
 import Tooltip from "@material-ui/core/Tooltip";
 
 export default () => {
-    const [anchorEl, setAnchorEl] = React.useState(null);
+    const [nameE, setNameE] = React.useState(null);
 
     const handleClick = event => {
-        setAnchorEl(event.currentTarget);
+        setNameE(event.currentTarget);
     };
 
     const handleClose = () => {
-        setAnchorEl(null);
+        setNameE(null);
     };
 
     return (
@@ -31,9 +31,9 @@ export default () => {
             </Tooltip>
             <Menu
                 id="simple-menu"
-                anchorEl={anchorEl}
+                anchorEl={nameE}
                 keepMounted
-                open={Boolean(anchorEl)}
+                open={Boolean(nameE)}
                 onClose={handleClose}
             >
                 <MenuItem onClick={handleClose}>Profile</MenuItem>
