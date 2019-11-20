@@ -4,7 +4,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import { withStyles } from "@material-ui/core";
 import styles from "./MenuCss";
 
-class Menu extends React.Component {
+export default withStyles(styles)(class Menu extends React.Component {
     render() {
         const { classes } = this.props;
         return (
@@ -20,6 +20,4 @@ class Menu extends React.Component {
             </React.Fragment>
         );
     }
-}
-
-export default withStyles(styles)(Menu);
+});

@@ -6,8 +6,9 @@ import Toolbar from "@material-ui/core/Toolbar";
 import UserButton from "./User/Button";
 import SideMenu from "./Side/Menu";
 
-export default withStyles(styles)(props => {
-        const { classes } = props;
+export default withStyles(styles)(class Header extends React.Component {
+    render() {
+        const { classes } = this.props;
         return (
             <div className={classes.root}>
                 <AppBar position="fixed">
@@ -31,4 +32,5 @@ export default withStyles(styles)(props => {
                 </AppBar>
             </div>
         );
+    }
 });

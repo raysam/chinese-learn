@@ -5,15 +5,17 @@ import theme from "../commons/Theme";
 import MainHome from "./Home/Main";
 import Header from "../components/UI/Header/Header";
 
-export default () => {
-    return (
-        <React.Fragment>
-            <CssBaseline />
-            <ThemeProvider theme={theme}>
-                <Header />
-
-                <MainHome />
-            </ThemeProvider>
-        </React.Fragment>
-    );
+export default class App extends React.Component {
+    render() {
+        return (
+            <React.Fragment>
+                <CssBaseline />
+                <ThemeProvider theme={theme}>
+                    <Header />
+    
+                    <MainHome />
+                </ThemeProvider>
+            </React.Fragment>
+        );
+    }
 }

@@ -1,5 +1,7 @@
 import React from "react";
 
-export default (props) => {
-    return <div>Main Home</div>;
+export default class extends React.Component {
+    render() {
+        return <div>Main Home</div>;
+    }
 }
