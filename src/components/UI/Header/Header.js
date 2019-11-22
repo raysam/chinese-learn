@@ -26,7 +26,6 @@ export default withStyles(styles)(class Header extends React.Component {
                                 />
                             </Link>
                         </div>
-                        {/* <Button color="inherit">Login</Button> */}
                         <UserButton />
                     </Toolbar>
                 </AppBar>

@@ -6,12 +6,11 @@ import MenuItem from "@material-ui/core/MenuItem";
 import Tooltip from "@material-ui/core/Tooltip";
 
 export default class Button extends React.Component {
-
     constructor(props) {
         super(props);
         this.state = {
             nameE: null
-        }
+        };
     }
 
     handleClick = event => {
@@ -21,9 +20,7 @@ export default class Button extends React.Component {
     };
 
     handleClose = () => {
-        this.setState({
-            nameE: null
-        });
+        this.setState({ nameE: null });
     };
 
     render() {
