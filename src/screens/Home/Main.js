@@ -1,7 +1,12 @@
 import React from "react";
+import Container from "@material-ui/core/Container";
 
 export default class extends React.Component {
     render() {
-        return <div>Main Home</div>;
+        return (
+            <Container fixed>
+
+            </Container>
+        );
     }
 }
