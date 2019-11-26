@@ -1,8 +1,7 @@
 import React from "react";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
-import InboxIcon from "@material-ui/icons/MoveToInbox";
-import MailIcon from "@material-ui/icons/Mail";
+import HomeIcon from "@material-ui/icons/Home";
 import { withStyles, Drawer, Link } from "@material-ui/core";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
@@ -56,23 +55,20 @@ export default withStyles(styles)(
                                 autoHide="false"
                             >
                                 <List>
-                                    {[
-                                        "Inbox",
-                                        "Starred",
-                                        "Send email",
-                                        "Drafts"
-                                    ].map((text, index) => (
-                                        <ListItem component={Link} href="https://www.google.com" button key={text}>
-                                            <ListItemIcon>
-                                                {index % 2 === 0 ? (
-                                                    <InboxIcon className={classes.menuItemColor} />
-                                                ) : (
-                                                    <MailIcon className={classes.menuItemColor} />
-                                                )}
-                                            </ListItemIcon>
-                                            <ListItemText >{text}</ListItemText>
-                                        </ListItem>
-                                    ))}
+                                    <ListItem
+                                        component={Link}
+                                        href="/"
+                                        button
+                                    >
+                                        <ListItemIcon>
+                                            <HomeIcon
+                                                className={
+                                                    classes.menuItemColor
+                                                }
+                                            />
+                                        </ListItemIcon>
+                                        <ListItemText>Home</ListItemText>
+                                    </ListItem>
                                 </List>
                             </SimpleBar>
                         </div>

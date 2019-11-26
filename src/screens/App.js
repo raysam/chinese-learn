@@ -12,7 +12,6 @@ export default class App extends React.Component {
                 <CssBaseline />
                 <ThemeProvider theme={theme}>
                     <Header />
-    
                     <MainHome />
                 </ThemeProvider>
             </React.Fragment>
