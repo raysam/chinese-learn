@@ -1,20 +1,50 @@
 import React from "react";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { ThemeProvider } from "@material-ui/styles";
+import Container from "@material-ui/core/Container";
 import theme from "../commons/Theme";
-import MainHome from "./Home/Main";
 import Header from "../components/UI/Header/Header";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { withStyles } from "@material-ui/core";
+import styles from "./AppCss";
+import routes from "./routes";
 
-export default class App extends React.Component {
+export default withStyles(styles)(class App extends React.Component {
     render() {
+        const { classes } = this.props;
         return (
-            <React.Fragment>
-                <CssBaseline />
-                <ThemeProvider theme={theme}>
-                    <Header />
-                    <MainHome />
-                </ThemeProvider>
-            </React.Fragment>
+            <BrowserRouter>
+                <React.Fragment>
+                    <CssBaseline />
+                    <ThemeProvider theme={theme}>
+                        <Header />
+                        <Container maxWidth="false" className={classes.root}>
+                            <Switch>
+                                {
+                                    this.showMainScreen(routes)
+                                }
+                            </Switch>
+                        </Container>
+                    </ThemeProvider>
+                </React.Fragment>
+            </BrowserRouter>
         );
     }
-}
+
+    showMainScreen = (routes) => {
+        let result = null;
+        if (routes.length > 0) {
+            result = routes.map(( route, index) => {
+                return (
+                    <Route 
+                        key={index} 
+                        path={route.path} 
+                        exact={route.exact} 
+                        component={route.main} 
+                    />
+                );
+            });
+        }
+        return result;
+    }
+});

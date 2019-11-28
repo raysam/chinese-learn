@@ -2,7 +2,8 @@ import React from "react";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import HomeIcon from "@material-ui/icons/Home";
-import { withStyles, Drawer, Link } from "@material-ui/core";
+import SpellcheckIcon from '@material-ui/icons/Spellcheck';
+import { withStyles, Drawer } from "@material-ui/core";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
@@ -10,6 +11,7 @@ import ListItemText from "@material-ui/core/ListItemText";
 import styles from "./MenuCss";
 import SimpleBar from "simplebar-react";
 import "simplebar/dist/simplebar.min.css";
+import { Link } from "react-router-dom";
 
 export default withStyles(styles)(
     class Menu extends React.Component {
@@ -57,8 +59,9 @@ export default withStyles(styles)(
                                 <List>
                                     <ListItem
                                         component={Link}
-                                        href="/"
+                                        to="/"
                                         button
+                                        onClick={this.toggleDrawer(false)}
                                     >
                                         <ListItemIcon>
                                             <HomeIcon
@@ -68,6 +71,21 @@ export default withStyles(styles)(
                                             />
                                         </ListItemIcon>
                                         <ListItemText>Home</ListItemText>
+                                    </ListItem>
+                                    <ListItem
+                                        component={Link}
+                                        to="/exam"
+                                        button
+                                        onClick={this.toggleDrawer(false)}
+                                    >
+                                        <ListItemIcon>
+                                            <SpellcheckIcon
+                                                className={
+                                                    classes.menuItemColor
+                                                }
+                                            />
+                                        </ListItemIcon>
+                                        <ListItemText>Kiểm Tra</ListItemText>
                                     </ListItem>
                                 </List>
                             </SimpleBar>

@@ -11,19 +11,20 @@ import {
     Typography,
     TableHead
 } from "@material-ui/core";
-import TranslateIcon from "@material-ui/icons/Translate";
+import FiberNewIcon from '@material-ui/icons/FiberNew';
 
 export default withStyles(styles)(
     class List extends Component {
         render() {
             const { classes } = this.props;
+
             return (
                 <Fragment>
-                    <Paper>
+                    <Paper className={classes.rootPaper}>
                         <Box className={classes.headTitle}>
                             <Box className={classes.titleWrap}>
                                 <Box className={classes.iconMain}>
-                                    <TranslateIcon />
+                                    <FiberNewIcon fontSize="large"/>
                                 </Box>
                                 <Box
                                     component="span"
@@ -31,47 +32,61 @@ export default withStyles(styles)(
                                 >
                                     SubTitle
                                 </Box>
-                                <Typography variant="h3" component="h3">
-                                    Main Title
+                                <Typography variant="h5" component="h5">
+                                    Từ mới
                                 </Typography>
                             </Box>
                         </Box>
                         <Table className={classes.tableParent}>
                             <TableHead className={classes.tableHead}>
                                 <TableRow>
-                                    <TableCell>
-                                        Dessert (100g serving)
+                                    <TableCell className={classes.colWidth17}>
+                                        Giản thể
                                     </TableCell>
-                                    <TableCell align="center">
-                                        Calories
+                                    <TableCell className={classes.colWidth17}>
+                                        Phồn thể
                                     </TableCell>
-                                    <TableCell align="center">
-                                        Fat&nbsp;(g)
+                                    <TableCell className={classes.colWidth17}>
+                                        Phiên âm
+                                    </TableCell>
+                                    <TableCell className={classes.colWidth17}>
+                                        Loại từ
+                                    </TableCell>
+                                    <TableCell className={classes.colWidth40}>
+                                        Ý nghĩa
                                     </TableCell>
                                 </TableRow>
                             </TableHead>
                             <TableBody>
                                 <TableRow>
-                                    <TableCell component="th" scope="row">
-                                        Cột Thứ 1
+                                    <TableCell scope="row" className={classes.colGen}>
+                                        你好
                                     </TableCell>
-                                    <TableCell align="center">
-                                        Cột Thứ 2
-                                    </TableCell>
-                                    <TableCell align="center">
-                                        Cột Thứ 3
-                                    </TableCell>
+                                    <TableCell className={classes.colGen}><Box component="span" className={classes.spanTC}>你好</Box></TableCell>
+                                    <TableCell className={classes.colGen}>nǐhǎo</TableCell>
+                                    <TableCell className={classes.colGen}>động từ</TableCell>
+                                    <TableCell className={classes.colGen}>xin chào</TableCell>
                                 </TableRow>
                                 <TableRow>
-                                    <TableCell component="th" scope="row">
-                                        Cột Thứ 1
-                                    </TableCell>
-                                    <TableCell align="center">
-                                        Cột Thứ 2
-                                    </TableCell>
-                                    <TableCell align="center">
-                                        Cột Thứ 3
-                                    </TableCell>
+                                    <TableCell scope="row" className={classes.colGen}>您</TableCell>
+                                    <TableCell className={classes.colGen}><Box component="span" className={classes.spanTC}>您</Box></TableCell>
+                                    <TableCell className={classes.colGen}>nín</TableCell>
+                                    <TableCell className={classes.colGen}>danh từ</TableCell>
+                                    <TableCell className={classes.colGen}>quỳ ngài, quý cô ( kính ngữ )</TableCell>
+                                </TableRow>
+                                <TableRow>
+                                    <TableCell scope="row" className={classes.colGen}>老师</TableCell>
+                                    <TableCell className={classes.colGen}><Box component="span" className={classes.spanTC}>老師</Box></TableCell>
+                                    <TableCell className={classes.colGen}>lǎoshī</TableCell>
+                                    <TableCell className={classes.colGen}>danh từ</TableCell>
+                                    <TableCell className={classes.colGen}>thầy, cô</TableCell>
+                                </TableRow>
+                                <TableRow>
+                                    <TableCell scope="row" className={classes.colGen}>谢谢</TableCell>
+                                    <TableCell className={classes.colGen}><Box component="span" className={classes.spanTC}>謝謝</Box></TableCell>
+                                    <TableCell className={classes.colGen}>xièxiè</TableCell>
+                                    <TableCell className={classes.colGen}>động từ</TableCell>
+                                    <TableCell className={classes.colGen}>cám ơn</TableCell>
                                 </TableRow>
                             </TableBody>
                         </Table>
