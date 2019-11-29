@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { Grid, Link } from "@material-ui/core";
-import { Translate, Update, Face, Facebook } from "@material-ui/icons";
+import { Grid } from "@material-ui/core";
+import { Translate, Update, Face, LocalLibrary } from "@material-ui/icons";
 import BlockItem from "./Item";
 
 export default class List extends Component {
@@ -10,7 +10,7 @@ export default class List extends Component {
                 <Grid item xs={3}>
                     <BlockItem
                         readmore={true}
-                        title="Số từ có trong server"
+                        title="Số từ hiện có"
                         value="13"
                         color="red"
                         icon={<Translate fontSize="large" />}
@@ -18,26 +18,26 @@ export default class List extends Component {
                 </Grid>
                 <Grid item xs={3}>
                     <BlockItem
+                        title="Số bài hiện có"
+                        value="2"
+                        color="green"
+                        icon={<LocalLibrary fontSize="large" />}
+                    />
+                </Grid>
+                <Grid item xs={3}>
+                    <BlockItem
                         title="Lần cập nhật cuối vào lúc"
                         value="12/12/2019"
-                        color="green"
+                        color="violet"
                         icon={<Update fontSize="large" />}
                     />
                 </Grid>
                 <Grid item xs={3}>
                     <BlockItem
                         title="Người dùng"
-                        value="1"
-                        color="violet"
-                        icon={<Face fontSize="large" />}
-                    />
-                </Grid>
-                <Grid item xs={3}>
-                    <BlockItem
-                        title="Bob"
-                        value={<Link href="https://www.facebook.com/luu.dat.tham" target="_blank">luu.dat.tham</Link>}
+                        value="2"
                         color="black"
-                        icon={<Facebook fontSize="large" />}
+                        icon={<Face fontSize="large" />}
                     />
                 </Grid>
             </Grid>

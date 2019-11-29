@@ -2,7 +2,7 @@ import React from "react";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import HomeIcon from "@material-ui/icons/Home";
-import SpellcheckIcon from '@material-ui/icons/Spellcheck';
+import SpellcheckIcon from "@material-ui/icons/Spellcheck";
 import { withStyles, Drawer } from "@material-ui/core";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
@@ -35,6 +35,20 @@ export default withStyles(styles)(
 
         render() {
             const { classes } = this.props;
+
+            const Menus = [
+                {
+                    path: "/",
+                    label: "Trang chủ",
+                    icon: <HomeIcon className={classes.menuItemColor} />
+                },
+                {
+                    path: "/exam",
+                    label: "Kiểm Tra",
+                    icon: <SpellcheckIcon className={classes.menuItemColor} />
+                }
+            ];
+
             return (
                 <React.Fragment>
                     <IconButton
@@ -57,36 +71,25 @@ export default withStyles(styles)(
                                 autoHide="false"
                             >
                                 <List>
-                                    <ListItem
-                                        component={Link}
-                                        to="/"
-                                        button
-                                        onClick={this.toggleDrawer(false)}
-                                    >
-                                        <ListItemIcon>
-                                            <HomeIcon
-                                                className={
-                                                    classes.menuItemColor
-                                                }
-                                            />
-                                        </ListItemIcon>
-                                        <ListItemText>Home</ListItemText>
-                                    </ListItem>
-                                    <ListItem
-                                        component={Link}
-                                        to="/exam"
-                                        button
-                                        onClick={this.toggleDrawer(false)}
-                                    >
-                                        <ListItemIcon>
-                                            <SpellcheckIcon
-                                                className={
-                                                    classes.menuItemColor
-                                                }
-                                            />
-                                        </ListItemIcon>
-                                        <ListItemText>Kiểm Tra</ListItemText>
-                                    </ListItem>
+                                    {Menus.map((menu, index) => {
+                                        return (
+                                            <ListItem
+                                                component={Link}
+                                                to={menu.path}
+                                                button
+                                                onClick={this.toggleDrawer(
+                                                    false
+                                                )}
+                                            >
+                                                <ListItemIcon>
+                                                    {menu.icon}
+                                                </ListItemIcon>
+                                                <ListItemText>
+                                                    {menu.label}
+                                                </ListItemText>
+                                            </ListItem>
+                                        );
+                                    })}
                                 </List>
                             </SimpleBar>
                         </div>
