@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
-class Select extends Component {
+
+class MainLearn extends Component {
     render() {
         return (
             <div>
-                Select
+                Trang học tập
             </div>
         )
     }
 }
 
-
-export default Select;
+export default MainLearn;

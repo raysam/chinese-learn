@@ -1,35 +1,51 @@
 import React from "react";
 import styles from "./HeaderCss";
-import { withStyles, Link } from "@material-ui/core";
+import { withStyles, Typography } from "@material-ui/core";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
-import UserButton from "./User/Button";
-import SideMenu from "./Side/Menu";
+// import UserButton from "../User/Button";
+import SideMenu from "../Side/Menu";
 
-export default withStyles(styles)(class Header extends React.Component {
+class Header extends React.Component {
     render() {
-        const { classes } = this.props;
+        const { classes, location } = this.props;
+        const titleList = [
+            {
+                pathname: "/",
+                label: "Trang chủ"
+            },
+            {
+                pathname: "/exam",
+                label: "Kiểm tra"
+            },
+            {
+                pathname: "/learn",
+                label: "Học Tập"
+            }
+        ];
+
+        let titlePage = "Trang Chủ";
+
+        titleList.map( (title, index) => {
+            if (title.pathname === location.pathname) {
+                titlePage = title.label;
+            }
+        });
+
         return (
             <div className={classes.root}>
                 <AppBar position="fixed">
                     <Toolbar>
                         <SideMenu />
-                        <div className={classes.title}>
-                            <Link href="#" className={classes.logoLink}>
-                                <img
-                                    className={classes.imgSmall}
-                                    src={
-                                        process.env.PUBLIC_URL +
-                                        "/assets/images/logo.svg"
-                                    }
-                                    alt="Logo"
-                                />
-                            </Link>
-                        </div>
-                        <UserButton />
+                        <Typography variant="h6" className={classes.title}>
+                            {titlePage}
+                        </Typography>
+                        {/* <UserButton /> */}
                     </Toolbar>
                 </AppBar>
             </div>
         );
     }
-});
+}
+
+export default withStyles(styles)(Header);

@@ -5,7 +5,7 @@ import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import Tooltip from "@material-ui/core/Tooltip";
 
-export default class Button extends React.Component {
+class Button extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -52,3 +52,5 @@ export default class Button extends React.Component {
         );
     }
 }
+
+export default Button;

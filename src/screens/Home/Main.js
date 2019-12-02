@@ -1,8 +1,8 @@
 import React from "react";
-import BlockList from "../../components/UI/Home/Block/List";
-import NewCharList from "../../components/UI/Home/NewChar/List";
+import BlockList from "../../components/UI/Block/List";
+import NewCharList from "../../components/UI/NewChar/List";
 
-export default class Main extends React.Component {
+class Main extends React.Component {
     render() {
         return (
             <React.Fragment>
@@ -12,3 +12,5 @@ export default class Main extends React.Component {
         );
     }
 };
+
+export default Main;

@@ -4,12 +4,14 @@ import { ThemeProvider } from "@material-ui/styles";
 import Container from "@material-ui/core/Container";
 import theme from "../commons/Theme";
 import Header from "../components/UI/Header/Header";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch, withRouter } from "react-router-dom";
 import { withStyles } from "@material-ui/core";
 import styles from "./AppCss";
 import routes from "./routes";
 
-export default withStyles(styles)(class App extends React.Component {
+const WHeader = withRouter(Header);
+
+class App extends React.Component {
     render() {
         const { classes } = this.props;
         return (
@@ -17,7 +19,7 @@ export default withStyles(styles)(class App extends React.Component {
                 <React.Fragment>
                     <CssBaseline />
                     <ThemeProvider theme={theme}>
-                        <Header />
+                        <WHeader />
                         <Container maxWidth="false" className={classes.root}>
                             <Switch>
                                 {
@@ -47,4 +49,6 @@ export default withStyles(styles)(class App extends React.Component {
         }
         return result;
     }
-});
+}
+
+export default withStyles(styles)(App);

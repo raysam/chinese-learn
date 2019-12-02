@@ -3,7 +3,7 @@ import { Grid } from "@material-ui/core";
 import { Translate, Update, Face, LocalLibrary } from "@material-ui/icons";
 import BlockItem from "./Item";
 
-export default class List extends Component {
+class List extends Component {
     render() {
         return (
             <Grid container justify="center" spacing="2">
@@ -44,3 +44,5 @@ export default class List extends Component {
         );
     }
 }
+
+export default List;
