@@ -20,7 +20,7 @@ class App extends React.Component {
                     <CssBaseline />
                     <ThemeProvider theme={theme}>
                         <WHeader />
-                        <Container maxWidth="false" className={classes.root}>
+                        <Container maxWidth={false} className={classes.root}>
                             <Switch>
                                 {
                                     this.showMainScreen(routes)

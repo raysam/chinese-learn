@@ -26,7 +26,7 @@ class Header extends React.Component {
 
         let titlePage = "Trang Chủ";
 
-        titleList.map( (title, index) => {
+        titleList.forEach(title => {
             if (title.pathname === location.pathname) {
                 titlePage = title.label;
             }

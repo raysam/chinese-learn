@@ -82,6 +82,7 @@ class Menu extends React.Component {
                                             component={Link}
                                             to={menu.path}
                                             button
+                                            key={index}
                                             onClick={this.toggleDrawer(false)}
                                         >
                                             <ListItemIcon>
