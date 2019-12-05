@@ -3,9 +3,10 @@ import LessonList from '../../components/UI/Lesson/List';
 
 class MainLearn extends Component {
     render() {
+        const {match} = this.props;
         return (
             <div>
-                <LessonList />
+                <LessonList match={match.match}/>
             </div>
         )
     }

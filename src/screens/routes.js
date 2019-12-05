@@ -19,7 +19,7 @@ const routes = [
     {
         path: "/learn",
         exact: false,
-        main: () => <LearnLesson />
+        main: (match) => <LearnLesson match={match} />
     },
     {
         path: "",
