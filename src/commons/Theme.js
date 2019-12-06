@@ -2,8 +2,11 @@ import { createMuiTheme } from "@material-ui/core/styles";
 
 const theme = createMuiTheme({
     palette: {
+        type: 'light',
         primary: {
+            light: "#06bce5",
             main: '#36b5b0',
+            dark: '#347f7c',
             contrastText: '#fff'
         },
         secondary: {
@@ -15,7 +18,9 @@ const theme = createMuiTheme({
     },
     color: {
         greed: '#36b5b0',
-        greedLight: '#9dd8c8',
+        greedLow: '#9dd8c8',
+        greedLight: '#06bce5',
+        greedDark: '#347f7c',
         red: '#ff2424',
         redLight: '#f09595',
         yellowLight: '#fcf5b0'

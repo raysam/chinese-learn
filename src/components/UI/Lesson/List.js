@@ -59,6 +59,7 @@ class List extends Component {
                                 component={NavLink}
                                 to={`${url}/abc`}
                                 activeClassName="active"
+                                new
                             >
                                 Bài số 3
                             </LessonItem>

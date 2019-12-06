@@ -18,7 +18,7 @@ class Item extends Component {
                     clickable
                     avatar={
                         this.props.newOne ? (
-                            <Avatar className={classes.midRed}>
+                            <Avatar>
                                 <FiberNewIcon fontSize="small" />
                             </Avatar>
                         ) : (
@@ -33,9 +33,8 @@ class Item extends Component {
                     to={this.props.to ? this.props.to : false}
                     activeClassName={this.props.activeClassName ? this.props.activeClassName : false}
                     onClick={this.handleClick}
-                    className={classes.chipMain}
+                    className={classes.chipMain + " " + this.props.new}
                     label={this.props.children}
-                    color="primary"
                 />
             </div>
         );

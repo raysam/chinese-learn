@@ -24,14 +24,21 @@ const styles = theme => ({
         width: "100%",
         justifyContent: "end",
         transition: "all 0.5s linear",
+        backgroundColor: theme.color.greedLight,
+        color: "#fff",
+        border: "1px solid transparent",
         "&.active": {
-            backgroundColor: theme.palette.error.main,
-            color: "#000"
+            backgroundColor: theme.color.greed,
+            borderColor: theme.color.greedDark
+        },
+        "& > .MuiAvatar-colorDefault": {
+            color: '#fff',
+            backgroundColor: theme.color.greedDark
+        },
+        "&.new > .MuiAvatar-colorDefault": {
+            color: "#fff",
+            backgroundColor: "#f84949"
         }
-    },
-    midRed: {
-        color: "#fff !important",
-        backgroundColor: "#f84949 !important"
     },
     abc: {}
 });
