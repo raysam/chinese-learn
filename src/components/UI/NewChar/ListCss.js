@@ -40,10 +40,10 @@ const styles = theme => ({
         }
     },
     colGen: {
-        fontFamily: "'Noto Sans SC', sans-serif"
+        fontFamily: theme.fonts.family.sC
     },
     spanTC: {
-        fontFamily: "'Noto Sans TC', sans-serif"
+        fontFamily: theme.fonts.family.tC
     },
     colWidth40: { width: "30%" },
     colWidth17: { width: "17.5%" },

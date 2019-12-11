@@ -26,10 +26,17 @@ const theme = createMuiTheme({
         yellowLight: '#fcf5b0'
     },
     fonts: {
-        tn: 10,
-        sm: 14,
-        md: 16,
-        lg: 20
+        size: {
+            tn: 10,
+            ltn: 12,
+            sm: 14,
+            md: 16,
+            lg: 20
+        },
+        family: {
+            sC: "'Noto Sans SC', sans-serif",
+            tC: "'Noto Sans TC', sans-serif"
+        }
     }
 });
 
