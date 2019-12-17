@@ -9,18 +9,18 @@ class Item extends Component {
             <Card className={classes.mainCard}>
                 <CardContent className={classes.cardContent}>
                     <Typography className={classes.pinyin} component="label">
-                        nǐhǎo
+                        {this.props.pinyin}
                     </Typography>
                     <Typography className={classes.mainWord} component="h3" variant="h5">
-                        你好
+                        {this.props.children}
                     </Typography>
                     <Divider className={classes.dvWord} />
                     <Typography className={classes.meaning} componen="p">
-                        Ý Nghĩa : abc xyz gì gì đó
+                        Ý Nghĩa : {this.props.mean}
                     </Typography>
                     <Divider className={classes.dvWord} />
                     <Typography className={classes.note+" "+classes.meaning} componen="p">
-                        Chú thích thêm : abc xyz gì gì đó
+                        Chú thích thêm : {this.props.note}
                     </Typography>
                 </CardContent>
             </Card>
