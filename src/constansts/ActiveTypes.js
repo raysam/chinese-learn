@@ -1,1 +1,1 @@
-// export const 
+export const DEFAULT_LESSON = 'DEFAULT_LESSON';

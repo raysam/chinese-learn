@@ -17,7 +17,7 @@ const routes = [
         main: () => <SelectExam />
     },
     {
-        path: "/learn",
+        path: ["/learn", "/learn/:slug"],
         exact: false,
         main: (match) => <LearnLesson match={match} />
     },

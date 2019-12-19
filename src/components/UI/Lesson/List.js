@@ -8,12 +8,6 @@ import "simplebar/dist/simplebar.min.css";
 import LessionDetail from "./Detail";
 
 class List extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            defaultLesson: "hug"
-        };
-    }
 
     render() {
         const { classes, match } = this.props;
