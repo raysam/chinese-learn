@@ -27,6 +27,9 @@ const styles = theme => ({
         backgroundColor: theme.color.greedLight,
         color: "#fff",
         border: "1px solid transparent",
+        "&:hover": {
+            backgroundColor: theme.color.greedSalk
+        },
         "&.active": {
             backgroundColor: theme.color.greed,
             borderColor: theme.color.greedDark

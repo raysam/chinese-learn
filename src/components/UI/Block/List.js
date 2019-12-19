@@ -6,7 +6,7 @@ import BlockItem from "./Item";
 class List extends Component {
     render() {
         return (
-            <Grid container justify="center" spacing="2">
+            <Grid container justify="center" spacing={2}>
                 <Grid item xs={3}>
                     <BlockItem
                         readmore={true}

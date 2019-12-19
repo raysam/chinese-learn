@@ -5,8 +5,9 @@ import WordItem from "../Word/Item";
 
 class Detail extends Component {
     render() {
-        const { classes, match } = this.props;
-
+        // const { classes, match } = this.props;
+        const { classes } = this.props;
+        
         const listWord = [
             {id: 1, pinyin: "abc", word: "你好", mean: "cais gif dos ratas laf daif vaf chinhs xacs", note: "abc gif gif dos caafn phari thaajt laf daif moiws ddc"},
             {id: 2, pinyin: "abc1", word: "你好2", mean: "cais gif dos ratas laf daif vaf chinhs xacs", note: "abc gif gif dos caafn phari thaajt laf daif moiws ddc"},
@@ -29,10 +30,9 @@ class Detail extends Component {
 
         return (
             <div className={classes.abc}>
-                <Grid container justify="left" spacing="2">
+                <Grid container spacing={2}>
                     {listWordUI}
                 </Grid>
-                
             </div>
         );
     }

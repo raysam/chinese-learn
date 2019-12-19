@@ -21,6 +21,7 @@ const theme = createMuiTheme({
         greedLow: '#9dd8c8',
         greedLight: '#06bce5',
         greedDark: '#347f7c',
+        greedSalk: '#48d9f9',
         red: '#ff2424',
         redLight: '#f09595',
         yellowLight: '#fcf5b0'

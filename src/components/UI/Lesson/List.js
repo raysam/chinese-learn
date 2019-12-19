@@ -28,11 +28,12 @@ class List extends Component {
                     >
                         <div className={classes.listLesson}>
                             <LessonItem
-                                key="4" 
-                                newOne={true} 
-                                component={NavLink} 
-                                to={`${url}/abc`} 
+                                key="4"
+                                newOne={true}
+                                component={NavLink}
+                                to={`${url}/abc`}
                                 activeClassName="active"
+                                new
                             >
                                 Bài số 3
                             </LessonItem>
@@ -68,17 +69,8 @@ class List extends Component {
                 </div>
                 <div className={classes.mainContent}>
                     <Switch>
-                        <Route
-                            path="/learn"
-                            exact
-                            component={props => (
-                                <LessionDetail
-                                    {...props}
-                                    def={this.state.defaultLesson}
-                                />
-                            )}
-                        />
                         <Route path="/learn/:slug" component={LessionDetail} />
+                        <Route render={() => <div>Vui lòng chọn 1 bài để bắt đầu học</div>}/>
                     </Switch>
                 </div>
             </Fragment>
