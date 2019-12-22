@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
-import setDefaultLession from './defaultLesson';
-import allLession from './lessonSettings';
+import allLession from './lessonReducer';
+import allWord from './wordReducer';
 
 const mainReducer = combineReducers({
-    setDefaultLession,
-    allLession
+    allLession,
+    allWord
 });
 
 export default mainReducer;

@@ -1,2 +1,2 @@
-export const DEFAULT_LESSON = 'DEFAULT_LESSON';
 export const SHOW_ALL_LESSON = 'SHOW_ALL_LESSON';
+export const SHOW_ALL_WORD = 'SHOW_ALL_WORD';

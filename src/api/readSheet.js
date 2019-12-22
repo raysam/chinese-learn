@@ -20,3 +20,20 @@ export const getUpdateDate = async () => {
     let resp = await callApi(config.TABLE_UPDATE_DATE);
     return resp[0][0];
 }
+
+export const getAllWords = async () => {
+    let resp = await callApi(config.TABLE_WORDS);
+    let restructure = resp.map((row, index) => {
+        return {
+            id: row[0],
+            parent_id: row[1],
+            word: row[2],
+            mword: row[3],
+            pinyin: row[4],
+            mean: row[5],
+            create_date: row[6],
+        }
+    });
+    restructure.shift();
+    return restructure;
+}

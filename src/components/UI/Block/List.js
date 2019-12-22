@@ -18,6 +18,7 @@ class List extends Component {
     
     async componentDidMount() {
         this.props.onGetLesson(await apiFunction.getAllLessons());
+        this.props.onGetWord(await apiFunction.getAllWords());
         let updateDate = await apiFunction.getUpdateDate();
         let formatDate = new Date(updateDate);
         this.setState({
@@ -26,8 +27,7 @@ class List extends Component {
     }
     
     render() {
-        var { listLesson } = this.props;
-        
+        var { listLesson, listWord } = this.props;
 
         return (
             <Grid container justify="center" spacing={2}>
@@ -35,7 +35,7 @@ class List extends Component {
                     <BlockItem
                         readmore={true}
                         title="Số từ hiện có"
-                        value="13"
+                        value={listWord.length}
                         color="red"
                         icon={<Translate fontSize="large" />}
                     />
@@ -71,7 +71,8 @@ class List extends Component {
 
 const mapState = state => {
     return {
-        listLesson: state.allLession
+        listLesson: state.allLession,
+        listWord: state.allWord
     }
 }
 
@@ -79,6 +80,9 @@ const mapDispatch = (dispatch, props) => {
     return {
         onGetLesson: lesson => {
             dispatch(actions.setAllLesson(lesson));
+        },
+        onGetWord: word => {
+            dispatch(actions.setAllWord(word));
         }
     }
 }
