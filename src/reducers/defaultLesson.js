@@ -1,5 +1,4 @@
-import * as types from './../constansts/ActiveTypes';
-
+import * as types from '../constansts/ActiveTypes';
 
 var defaultState = '';
 

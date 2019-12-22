@@ -12,6 +12,7 @@ import routes from "./routes";
 const WHeader = withRouter(Header);
 
 class App extends React.Component {
+
     render() {
         const { classes } = this.props;
         return (
@@ -21,11 +22,7 @@ class App extends React.Component {
                     <ThemeProvider theme={theme}>
                         <WHeader />
                         <Container maxWidth={false} className={classes.root}>
-                            <Switch>
-                                {
-                                    this.showMainScreen(routes)
-                                }
-                            </Switch>
+                            <Switch>{this.showMainScreen(routes)}</Switch>
                         </Container>
                     </ThemeProvider>
                 </React.Fragment>
@@ -33,22 +30,22 @@ class App extends React.Component {
         );
     }
 
-    showMainScreen = (routes) => {
+    showMainScreen = routes => {
         let result = null;
         if (routes.length > 0) {
-            result = routes.map(( route, index) => {
+            result = routes.map((route, index) => {
                 return (
-                    <Route 
-                        key={index} 
-                        path={route.path} 
-                        exact={route.exact} 
-                        component={route.main} 
+                    <Route
+                        key={index}
+                        path={route.path}
+                        exact={route.exact}
+                        component={route.main}
                     />
                 );
             });
         }
         return result;
-    }
+    };
 }
 
 export default withStyles(styles)(App);

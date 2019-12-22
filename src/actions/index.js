@@ -6,3 +6,10 @@ export const setDefaultLesson = (lessonDefault) => {
         lessonDefault
     }
 };
+
+export const setAllLesson = lessons => {
+    return {
+        type: types.SHOW_ALL_LESSON,
+        lessons
+    }
+}

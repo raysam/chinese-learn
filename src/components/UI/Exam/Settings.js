@@ -188,7 +188,9 @@ class Settings extends Component {
                     {this.state.activeStep === listStep.length ? (
                         <div>
                             <Typography>All steps completed</Typography>
-                            <Button onClick={this.handleReset}>Reset</Button>
+                            <div className={classes.btnArea}>
+                                <Button onClick={this.handleReset}>Reset</Button>
+                            </div>
                         </div>
                     ) : (
                         <Fragment>

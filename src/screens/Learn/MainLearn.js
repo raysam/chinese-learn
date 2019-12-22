@@ -6,14 +6,6 @@ import { Redirect } from 'react-router-dom';
 
 
 class MainLearn extends Component {
-
-    componentWillMount() {
-    }
-    
-    componentWillUpdate() {
-        
-    }
-    
     render() {
         const { defaultLesson, match } = this.props;
         this.props.onSetLesson('abc');
