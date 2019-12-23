@@ -4,7 +4,9 @@ import { Translate, Update, Face, LocalLibrary } from "@material-ui/icons";
 import BlockItem from "./Item";
 import { connect } from 'react-redux';
 import * as actions from '../../../actions';
-import * as apiFunction from '../../../api/readSheet';
+import config from "../../../constansts/config";
+import callApi from '../../../api/sheet';
+import * as sheetHelper from '../../../api/sheetHelper';
 
 class List extends Component {
 
@@ -17,13 +19,18 @@ class List extends Component {
     
     
     async componentDidMount() {
-        this.props.onGetLesson(await apiFunction.getAllLessons());
-        this.props.onGetWord(await apiFunction.getAllWords());
-        let updateDate = await apiFunction.getUpdateDate();
-        let formatDate = new Date(updateDate);
-        this.setState({
-            updateDate: `${formatDate.getDate()}/${formatDate.getMonth()+1}/${formatDate.getFullYear()}`
-        })
+        callApi(config.TABLE_LESSONS).then(resp => {
+            this.props.onGetLesson(sheetHelper.getAllLessons(resp));
+        });
+        callApi(config.TABLE_WORDS).then(resp => {
+            this.props.onGetWord(sheetHelper.getAllWords(resp));
+        });
+        callApi(config.TABLE_UPDATE_DATE).then(resp => {
+            let formatDate = new Date(sheetHelper.getUpdateDate(resp));
+            this.setState({
+                updateDate: `${formatDate.getDate()}/${formatDate.getMonth()+1}/${formatDate.getFullYear()}`
+            });
+        });
     }
     
     render() {

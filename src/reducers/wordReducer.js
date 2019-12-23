@@ -1,5 +1,6 @@
 import * as types from '../constansts/ActiveTypes';
 
+
 var defaultState = [];
 
 var setAllWord = (state = defaultState, action) => {

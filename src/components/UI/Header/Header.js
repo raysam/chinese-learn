@@ -11,15 +11,15 @@ class Header extends React.Component {
         const { classes, location } = this.props;
         const titleList = [
             {
-                pathname: "/",
+                pathname: /\//,
                 label: "Trang chủ"
             },
             {
-                pathname: "/exam",
+                pathname: /\/exam/,
                 label: "Kiểm tra"
             },
             {
-                pathname: "/learn",
+                pathname: /\/learn(\/.*)*/,
                 label: "Học Tập"
             }
         ];
@@ -27,7 +27,7 @@ class Header extends React.Component {
         let titlePage = "Trang Chủ";
 
         titleList.forEach(title => {
-            if (title.pathname === location.pathname) {
+            if (title.pathname.test(location.pathname)) {
                 titlePage = title.label;
             }
         });
