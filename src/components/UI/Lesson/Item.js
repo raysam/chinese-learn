@@ -6,9 +6,6 @@ import FiberNewIcon from "@material-ui/icons/FiberNew";
 import FolderIcon from "@material-ui/icons/Folder";
 
 class Item extends Component {
-    handleClick = () => {
-        console.log("changed code");
-    };
 
     render() {
         const { classes } = this.props;
@@ -32,7 +29,6 @@ class Item extends Component {
                     }
                     to={this.props.to ? this.props.to : false}
                     activeClassName={this.props.activeClassName ? this.props.activeClassName : false}
-                    onClick={this.handleClick}
                     className={classes.chipMain + " " + this.props.new}
                     label={this.props.children}
                 />

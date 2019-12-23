@@ -12,10 +12,32 @@ import {
     TableHead
 } from "@material-ui/core";
 import FiberNewIcon from "@material-ui/icons/FiberNew";
-
+import { connect } from "react-redux";
+import * as actions from "../../../actions";
+import * as sheetHelper from '../../../api/sheetHelper';
 class List extends Component {
     render() {
-        const { classes } = this.props;
+        const { listWord, classes } = this.props;
+
+        let wrapWord = sheetHelper.getTopWord(listWord, 20).map((word, index) => {
+            return (
+                <TableRow key={index}>
+                    <TableCell className={classes.colGen}>
+                        {index+1}
+                    </TableCell>
+                    <TableCell scope="row" className={classes.colGen}>
+                        {word.word}
+                    </TableCell>
+                    <TableCell className={classes.colGen}>
+                        <Box component="span" className={classes.spanTC}>
+                            {word.mword}
+                        </Box>
+                    </TableCell>
+                    <TableCell className={classes.colGen}>{word.pinyin}</TableCell>
+                    <TableCell className={classes.colGen}>{word.mean}</TableCell>
+                </TableRow>
+            );
+        });
 
         return (
             <Fragment>
@@ -26,7 +48,7 @@ class List extends Component {
                                 <FiberNewIcon fontSize="large" />
                             </Box>
                             <Box component="span" className={classes.miniTitle}>
-                                SubTitle
+                                Trong hệ thống
                             </Box>
                             <Typography variant="h5" component="h5">
                                 Từ mới
@@ -36,6 +58,9 @@ class List extends Component {
                     <Table className={classes.tableParent}>
                         <TableHead className={classes.tableHead}>
                             <TableRow>
+                                <TableCell className={classes.colWidth10}>
+                                    STT
+                                </TableCell>
                                 <TableCell className={classes.colWidth17}>
                                     Giản thể
                                 </TableCell>
@@ -45,115 +70,15 @@ class List extends Component {
                                 <TableCell className={classes.colWidth17}>
                                     Phiên âm
                                 </TableCell>
-                                <TableCell className={classes.colWidth17}>
-                                    Loại từ
-                                </TableCell>
                                 <TableCell className={classes.colWidth40}>
                                     Ý nghĩa
                                 </TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            <TableRow>
-                                <TableCell
-                                    scope="row"
-                                    className={classes.colGen}
-                                >
-                                    你好
-                                </TableCell>
-                                <TableCell className={classes.colGen}>
-                                    <Box
-                                        component="span"
-                                        className={classes.spanTC}
-                                    >
-                                        你好
-                                    </Box>
-                                </TableCell>
-                                <TableCell className={classes.colGen}>
-                                    nǐhǎo
-                                </TableCell>
-                                <TableCell className={classes.colGen}>
-                                    động từ
-                                </TableCell>
-                                <TableCell className={classes.colGen}>
-                                    xin chào
-                                </TableCell>
-                            </TableRow>
-                            <TableRow>
-                                <TableCell
-                                    scope="row"
-                                    className={classes.colGen}
-                                >
-                                    您
-                                </TableCell>
-                                <TableCell className={classes.colGen}>
-                                    <Box
-                                        component="span"
-                                        className={classes.spanTC}
-                                    >
-                                        您
-                                    </Box>
-                                </TableCell>
-                                <TableCell className={classes.colGen}>
-                                    nín
-                                </TableCell>
-                                <TableCell className={classes.colGen}>
-                                    danh từ
-                                </TableCell>
-                                <TableCell className={classes.colGen}>
-                                    quỳ ngài, quý cô ( kính ngữ )
-                                </TableCell>
-                            </TableRow>
-                            <TableRow>
-                                <TableCell
-                                    scope="row"
-                                    className={classes.colGen}
-                                >
-                                    老师
-                                </TableCell>
-                                <TableCell className={classes.colGen}>
-                                    <Box
-                                        component="span"
-                                        className={classes.spanTC}
-                                    >
-                                        老師
-                                    </Box>
-                                </TableCell>
-                                <TableCell className={classes.colGen}>
-                                    lǎoshī
-                                </TableCell>
-                                <TableCell className={classes.colGen}>
-                                    danh từ
-                                </TableCell>
-                                <TableCell className={classes.colGen}>
-                                    thầy, cô
-                                </TableCell>
-                            </TableRow>
-                            <TableRow>
-                                <TableCell
-                                    scope="row"
-                                    className={classes.colGen}
-                                >
-                                    谢谢
-                                </TableCell>
-                                <TableCell className={classes.colGen}>
-                                    <Box
-                                        component="span"
-                                        className={classes.spanTC}
-                                    >
-                                        謝謝
-                                    </Box>
-                                </TableCell>
-                                <TableCell className={classes.colGen}>
-                                    xièxiè
-                                </TableCell>
-                                <TableCell className={classes.colGen}>
-                                    động từ
-                                </TableCell>
-                                <TableCell className={classes.colGen}>
-                                    cám ơn
-                                </TableCell>
-                            </TableRow>
+                            {
+                                wrapWord
+                            }
                         </TableBody>
                     </Table>
                 </Paper>
@@ -162,4 +87,18 @@ class List extends Component {
     }
 }
 
-export default withStyles(styles)(List);
+const mapState = state => {
+    return {
+        listWord: state.allWord
+    };
+};
+
+const mapDispatch = (dispatch, props) => {
+    return {
+        onSetWord: word => {
+            dispatch(actions.setAllWord(word));
+        }
+    };
+};
+
+export default connect(mapState, mapDispatch)(withStyles(styles)(List));

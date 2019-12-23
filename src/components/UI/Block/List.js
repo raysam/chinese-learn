@@ -17,14 +17,7 @@ class List extends Component {
         }
     }
     
-    
-    async componentDidMount() {
-        callApi(config.TABLE_LESSONS).then(resp => {
-            this.props.onGetLesson(sheetHelper.getAllLessons(resp));
-        });
-        callApi(config.TABLE_WORDS).then(resp => {
-            this.props.onGetWord(sheetHelper.getAllWords(resp));
-        });
+    componentDidMount() {
         callApi(config.TABLE_UPDATE_DATE).then(resp => {
             let formatDate = new Date(sheetHelper.getUpdateDate(resp));
             this.setState({

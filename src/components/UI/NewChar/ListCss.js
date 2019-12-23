@@ -45,8 +45,9 @@ const styles = theme => ({
     spanTC: {
         fontFamily: theme.fonts.family.tC
     },
-    colWidth40: { width: "30%" },
+    colWidth40: { width: "42.5%" },
     colWidth17: { width: "17.5%" },
+    colWidth10: { width: "5%" },
 });
 
 export default styles;
