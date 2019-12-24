@@ -36,7 +36,7 @@ class List extends Component {
                         Bài số {lesson.id}: {lesson.name}
                     </LessonItem>)
                 }),
-                lastLesson: this.props.listLesson.pop()
+                lastLesson: this.props.listLesson[this.props.listLesson.length-1]
             })
         });
     }

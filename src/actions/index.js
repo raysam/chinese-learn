@@ -14,3 +14,17 @@ export const setAllWord = words => {
         words
     }
 }
+
+export const setSettingStep1 = lessonIdList => {
+    return {
+        type: types.STEP1_DONE,
+        lessonIdList
+    }
+}
+
+export const setSettingStep2 = settings => {
+    return {
+        type: types.STEP2_DONE,
+        settings
+    }
+}

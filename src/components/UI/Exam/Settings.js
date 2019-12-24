@@ -19,6 +19,11 @@ import BookmarkIcon from "@material-ui/icons/Bookmark";
 import BookmarkBorderIcon from "@material-ui/icons/BookmarkBorder";
 import FiberNewIcon from "@material-ui/icons/FiberNew";
 import FiberNewOutlinedIcon from "@material-ui/icons/FiberNewOutlined";
+import { connect } from 'react-redux';
+import * as actions from '../../../actions';
+import config from "../../../constansts/config";
+import callApi from '../../../api/sheet';
+import * as sheetHelper from '../../../api/sheetHelper';
 
 const LineConnector = withStyles({
     alternativeLabel: {
@@ -54,12 +59,22 @@ const RedCheckbox = withStyles({
 })(props => <Checkbox color="default" {...props} />);
 
 class Settings extends Component {
+
+    componentDidMount() {
+        callApi(config.TABLE_LESSONS).then(resp => {
+            this.props.onSetLesson(sheetHelper.getAllLessons(resp));
+        });
+    }
+
     state = {
         activeStep: 0
     };
 
     handleNext = () => {
         const { activeStep } = this.state;
+        if (activeStep === 1) {
+            console.log()
+        }
         this.setState({
             activeStep: activeStep + 1
         });
@@ -77,63 +92,37 @@ class Settings extends Component {
             activeStep: 0
         });
     };
+    handeChange = e => {
+        // console.log(e.target.attr());
+        // this.props.onSetLesson(e.target.value);
+    }
 
     getStepContent = (step, classes) => {
         switch (step) {
             case 0:
                 return (
-                    <FormGroup row>
-                        <FormControlLabel
-                            control={
-                                <RedCheckbox
-                                    icon={<FiberNewOutlinedIcon />}
-                                    checkedIcon={<FiberNewIcon />}
-                                    value="checkedH"
-                                />
+                    <form>
+                        <FormGroup row>
+                            {
+                                this.props.listLesson.map((lesson, i) => {
+                                    return (<FormControlLabel
+                                        key={i}
+                                        control={
+                                            <RedCheckbox
+                                                icon={(this.props.listLesson.length === i+1) ? <FiberNewOutlinedIcon /> : <BookmarkBorderIcon />}
+                                                checkedIcon={(this.props.listLesson.length === i+1) ? <FiberNewIcon /> : <BookmarkIcon />}
+                                                value={lesson.id}
+                                                name="bai"
+                                                data-value={lesson.id}
+                                                onChange={ this.handeChange }
+                                            />
+                                        }
+                                        label={`Bài ${lesson.id}: ${lesson.name}`}
+                                />)
+                                })
                             }
-                            label="Bài 1"
-                        />
-                        <FormControlLabel
-                            control={
-                                <RedCheckbox
-                                    icon={<BookmarkBorderIcon />}
-                                    checkedIcon={<BookmarkIcon />}
-                                    value="checkedH"
-                                />
-                            }
-                            label="Bài 2"
-                        />
-                        <FormControlLabel
-                            control={
-                                <RedCheckbox
-                                    icon={<BookmarkBorderIcon />}
-                                    checkedIcon={<BookmarkIcon />}
-                                    value="checkedH"
-                                />
-                            }
-                            label="Bài 3"
-                        />
-                        <FormControlLabel
-                            control={
-                                <RedCheckbox
-                                    icon={<BookmarkBorderIcon />}
-                                    checkedIcon={<BookmarkIcon />}
-                                    value="checkedH"
-                                />
-                            }
-                            label="Bài 4"
-                        />
-                        <FormControlLabel
-                            control={
-                                <RedCheckbox
-                                    icon={<BookmarkBorderIcon />}
-                                    checkedIcon={<BookmarkIcon />}
-                                    value="checkedH"
-                                />
-                            }
-                            label="Bài 5"
-                        />
-                    </FormGroup>
+                        </FormGroup>
+                    </form>
                 );
             case 1:
                 return (
@@ -189,7 +178,7 @@ class Settings extends Component {
                         <div>
                             <Typography>All steps completed</Typography>
                             <div className={classes.btnArea}>
-                                <Button onClick={this.handleReset}>Reset</Button>
+                                <Button onClick={this.handleReset}>Làm lại</Button>
                             </div>
                         </div>
                     ) : (
@@ -201,22 +190,26 @@ class Settings extends Component {
                                 )}
                             </div>
                             <div className={classes.btnArea}>
-                                <Button
-                                    disabled={this.state.activeStep === 0}
-                                    onClick={this.handleBack}
-                                >
-                                    Back
-                                </Button>
-                                <Button
-                                    variant="contained"
-                                    color="primary"
-                                    onClick={this.handleNext}
-                                >
-                                    {this.state.activeStep ===
-                                    listStep.length - 1
-                                        ? "Finish"
-                                        : "Next"}
-                                </Button>
+                                <div className={classes.btnBackArea}>
+                                    <Button
+                                        disabled={this.state.activeStep === 0}
+                                        onClick={this.handleBack}
+                                    >
+                                        Trở về
+                                    </Button>
+                                </div>
+                                <div className={classes.btnNextArea}>
+                                    <Button
+                                        variant="contained"
+                                        color="primary"
+                                        onClick={this.handleNext}
+                                    >
+                                        {this.state.activeStep ===
+                                        listStep.length - 1
+                                            ? "Finish"
+                                            : "Tiếp theo"}
+                                    </Button>
+                                </div>
                             </div>
                         </Fragment>
                     )}
@@ -226,4 +219,29 @@ class Settings extends Component {
     }
 }
 
-export default withStyles(styles)(Settings);
+const mapState = state => {
+    return {
+        listLesson: state.allLession,
+        listWord: state.allWord,
+        examSettings: state.examSettings
+    }
+}
+
+const mapDispatch = (dispatch, props) => {
+    return {
+        onSetLesson: lesson => {
+            dispatch(actions.setAllLesson(lesson));
+        },
+        onSetWord: word => {
+            dispatch(actions.setAllWord(word));
+        },
+        onSetSettingStep1: lessonIdList => {
+            dispatch(actions.setSettingStep1(lessonIdList));
+        },
+        onSetSettingStep2: settings => {
+            dispatch(actions.setSettingStep2(settings));
+        }
+    }
+}
+
+export default connect(mapState, mapDispatch)(withStyles(styles)(Settings));

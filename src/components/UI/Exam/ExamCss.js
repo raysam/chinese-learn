@@ -8,13 +8,18 @@ const styles = theme => ({
         padding: 20
     },
     selectLesson: {
-        marginBottom: 20
+        // marginBottom: 20
     },
     btnArea: {
-        textAlign: 'center',
-        '&>*': {
-            marginRight: 20
-        }
+        display: 'flex',
+        marginTop: 20
+    },
+    btnBackArea: {
+        width: "50%"
+    },
+    btnNextArea: {
+        width: "50%",
+        textAlign: 'right'
     },
     labelSetting: {
         display: 'block',
