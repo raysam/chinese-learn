@@ -15,8 +15,9 @@ class Detail extends Component {
         const { listWord, listLesson, classes, match } = this.props;
         let lesson = sheetHelper.getLessonBySlug(listLesson, match.params.slug);
         
-        const words = (lesson) ? sheetHelper.getWordsByParentId(listWord, lesson.id) : [];
+        const words = (lesson) ? sheetHelper.getWordsByParentId(listWord, [lesson.id]) : [];
 
+        console.log(words)
         const wordUI = (!words) ? "" : words.map((word, index) => {
             return (
                 <Grid item xs={3} key={index}>

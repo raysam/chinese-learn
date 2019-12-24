@@ -19,11 +19,11 @@ import BookmarkIcon from "@material-ui/icons/Bookmark";
 import BookmarkBorderIcon from "@material-ui/icons/BookmarkBorder";
 import FiberNewIcon from "@material-ui/icons/FiberNew";
 import FiberNewOutlinedIcon from "@material-ui/icons/FiberNewOutlined";
-import { connect } from 'react-redux';
-import * as actions from '../../../actions';
+import { connect } from "react-redux";
+import * as actions from "../../../actions";
 import config from "../../../constansts/config";
-import callApi from '../../../api/sheet';
-import * as sheetHelper from '../../../api/sheetHelper';
+import callApi from "../../../api/sheet";
+import * as sheetHelper from "../../../api/sheetHelper";
 
 const LineConnector = withStyles({
     alternativeLabel: {
@@ -60,20 +60,32 @@ const RedCheckbox = withStyles({
 
 class Settings extends Component {
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            checkedListAll: [],
+            activeStep: 0
+        };
+    }
+
     componentDidMount() {
         callApi(config.TABLE_LESSONS).then(resp => {
             this.props.onSetLesson(sheetHelper.getAllLessons(resp));
+            callApi(config.TABLE_WORDS).then(wordresp => {
+                this.props.onSetWord(sheetHelper.getAllWords(wordresp));
+            })
         });
     }
 
-    state = {
-        activeStep: 0
-    };
-
     handleNext = () => {
         const { activeStep } = this.state;
+        if (activeStep === 0) {
+            this.props.onSetSettingStep1(this.state.checkedListAll);
+            let words = sheetHelper.getWordsByParentId(this.props.listWord, this.props.examSettings.lessonIdList);
+            console.log('word',words);
+        }
         if (activeStep === 1) {
-            console.log()
+
         }
         this.setState({
             activeStep: activeStep + 1
@@ -93,9 +105,20 @@ class Settings extends Component {
         });
     };
     handeChange = e => {
-        // console.log(e.target.attr());
-        // this.props.onSetLesson(e.target.value);
-    }
+        const { value, checked } = e.target;
+
+        if (checked) {
+            this.setState(prevState => ({
+                checkedListAll: [...prevState.checkedListAll, value]
+            }));
+        } else {
+            this.setState(prevState => ({
+                checkedListAll: prevState.checkedListAll.filter(
+                    item => item !== value
+                )
+            }));
+        }
+    };
 
     getStepContent = (step, classes) => {
         switch (step) {
@@ -103,24 +126,39 @@ class Settings extends Component {
                 return (
                     <form>
                         <FormGroup row>
-                            {
-                                this.props.listLesson.map((lesson, i) => {
-                                    return (<FormControlLabel
+                            {this.props.listLesson.map((lesson, i) => {
+                                return (
+                                    <FormControlLabel
                                         key={i}
                                         control={
                                             <RedCheckbox
-                                                icon={(this.props.listLesson.length === i+1) ? <FiberNewOutlinedIcon /> : <BookmarkBorderIcon />}
-                                                checkedIcon={(this.props.listLesson.length === i+1) ? <FiberNewIcon /> : <BookmarkIcon />}
+                                                icon={
+                                                    this.props.listLesson
+                                                        .length ===
+                                                    i + 1 ? (
+                                                        <FiberNewOutlinedIcon />
+                                                    ) : (
+                                                        <BookmarkBorderIcon />
+                                                    )
+                                                }
+                                                checkedIcon={
+                                                    this.props.listLesson
+                                                        .length ===
+                                                    i + 1 ? (
+                                                        <FiberNewIcon />
+                                                    ) : (
+                                                        <BookmarkIcon />
+                                                    )
+                                                }
                                                 value={lesson.id}
                                                 name="bai"
-                                                data-value={lesson.id}
-                                                onChange={ this.handeChange }
+                                                onChange={this.handeChange}
                                             />
                                         }
                                         label={`Bài ${lesson.id}: ${lesson.name}`}
-                                />)
-                                })
-                            }
+                                    />
+                                );
+                            })}
                         </FormGroup>
                     </form>
                 );
@@ -128,7 +166,12 @@ class Settings extends Component {
                 return (
                     <Fragment>
                         <FormGroup row>
-                            <Typography component="label" className={classes.labelSetting}>Số lượng từ cần kiểm tra:</Typography>
+                            <Typography
+                                component="label"
+                                className={classes.labelSetting}
+                            >
+                                Số lượng từ cần kiểm tra:
+                            </Typography>
                             <Slider
                                 defaultValue={2}
                                 aria-labelledby="discrete-slider-small-steps"
@@ -140,7 +183,12 @@ class Settings extends Component {
                             />
                         </FormGroup>
                         <FormGroup row>
-                            <Typography component="label" className={classes.labelSetting}>Kiểm tra Online</Typography>
+                            <Typography
+                                component="label"
+                                className={classes.labelSetting}
+                            >
+                                Kiểm tra Online
+                            </Typography>
                             <Switch
                                 value="checkedC"
                                 inputProps={{
@@ -178,7 +226,9 @@ class Settings extends Component {
                         <div>
                             <Typography>All steps completed</Typography>
                             <div className={classes.btnArea}>
-                                <Button onClick={this.handleReset}>Làm lại</Button>
+                                <Button onClick={this.handleReset}>
+                                    Làm lại
+                                </Button>
                             </div>
                         </div>
                     ) : (
@@ -224,8 +274,8 @@ const mapState = state => {
         listLesson: state.allLession,
         listWord: state.allWord,
         examSettings: state.examSettings
-    }
-}
+    };
+};
 
 const mapDispatch = (dispatch, props) => {
     return {
@@ -241,7 +291,7 @@ const mapDispatch = (dispatch, props) => {
         onSetSettingStep2: settings => {
             dispatch(actions.setSettingStep2(settings));
         }
-    }
-}
+    };
+};
 
 export default connect(mapState, mapDispatch)(withStyles(styles)(Settings));

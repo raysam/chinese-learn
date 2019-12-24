@@ -63,5 +63,12 @@ export const getLessonBySlug = (lessons, slug) => {
 }
 
 export const getWordsByParentId = (words, parent_id) => {
-    return words.filter(word => (word.parent_id === parent_id));
+    return words.filter(word => {
+        for (let pid of parent_id) {
+            if (word.parent_id === pid) {
+                return true
+            }
+        }
+        return false
+    });
 }
