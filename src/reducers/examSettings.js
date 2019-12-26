@@ -12,9 +12,11 @@ var defaultState = {
 var setSettings = (state = defaultState, action) => {
     switch(action.type) {
         case types.STEP1_DONE:
-            return state.lessonIdList = action.lessonIdList;
+            state.lessonIdList = action.lessonIdList;
+            return state;
         case types.STEP2_DONE:
-            return state.settings.numberWords = action.settings.numberWords;
+            state.settings.numberWords = action.settings.numberWords;
+            return state;
         default:
             return state;
     }

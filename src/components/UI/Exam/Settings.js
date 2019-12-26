@@ -59,33 +59,35 @@ const RedCheckbox = withStyles({
 })(props => <Checkbox color="default" {...props} />);
 
 class Settings extends Component {
-
-    constructor(props) {
-        super(props);
-        this.state = {
-            checkedListAll: [],
-            activeStep: 0
-        };
-    }
+    state = {
+        lessonIdList: [],
+        maxLengthWord: 0,
+        settings: {
+            numberWords: 0,
+            examOnline: false
+        },
+        activeStep: 0
+    };
 
     componentDidMount() {
         callApi(config.TABLE_LESSONS).then(resp => {
             this.props.onSetLesson(sheetHelper.getAllLessons(resp));
             callApi(config.TABLE_WORDS).then(wordresp => {
                 this.props.onSetWord(sheetHelper.getAllWords(wordresp));
-            })
+            });
         });
     }
 
     handleNext = () => {
         const { activeStep } = this.state;
         if (activeStep === 0) {
-            this.props.onSetSettingStep1(this.state.checkedListAll);
-            let words = sheetHelper.getWordsByParentId(this.props.listWord, this.props.examSettings.lessonIdList);
-            console.log('word',words);
-        }
-        if (activeStep === 1) {
-
+            let words = sheetHelper.getWordsByParentId(
+                this.props.listWord,
+                this.state.lessonIdList
+            );
+            this.setState({
+                maxLengthWord: words.length
+            });
         }
         this.setState({
             activeStep: activeStep + 1
@@ -101,23 +103,42 @@ class Settings extends Component {
 
     handleReset = () => {
         this.setState({
+            lessonIdList: [],
+            maxLengthWord: 0,
+            settings: {
+                numberWords: 0,
+                examOnline: false
+            },
             activeStep: 0
         });
     };
+
+    handleFinish = () => {
+        alert('dc roi')
+    }
+
     handeChange = e => {
         const { value, checked } = e.target;
 
         if (checked) {
             this.setState(prevState => ({
-                checkedListAll: [...prevState.checkedListAll, value]
+                lessonIdList: [...prevState.lessonIdList, value]
             }));
         } else {
             this.setState(prevState => ({
-                checkedListAll: prevState.checkedListAll.filter(
+                lessonIdList: prevState.lessonIdList.filter(
                     item => item !== value
                 )
             }));
         }
+    };
+
+    setupNumberWord = (e, v) => {
+        this.setState({
+            settings: {
+                numberWords: v
+            }
+        });
     };
 
     getStepContent = (step, classes) => {
@@ -173,13 +194,14 @@ class Settings extends Component {
                                 Số lượng từ cần kiểm tra:
                             </Typography>
                             <Slider
-                                defaultValue={2}
+                                defaultValue={0}
                                 aria-labelledby="discrete-slider-small-steps"
                                 step={1}
                                 marks
-                                min={1}
-                                max={20}
-                                valueLabelDisplay="auto"
+                                min={0}
+                                max={this.state.maxLengthWord}
+                                valueLabelDisplay="on"
+                                onChange={this.setupNumberWord}
                             />
                         </FormGroup>
                         <FormGroup row>
@@ -190,7 +212,7 @@ class Settings extends Component {
                                 Kiểm tra Online
                             </Typography>
                             <Switch
-                                value="checkedC"
+                                value="true"
                                 inputProps={{
                                     "aria-label": "primary checkbox"
                                 }}
@@ -223,14 +245,50 @@ class Settings extends Component {
                 </Stepper>
                 <div className={classes.stepContent}>
                     {this.state.activeStep === listStep.length ? (
-                        <div>
-                            <Typography>All steps completed</Typography>
-                            <div className={classes.btnArea}>
-                                <Button onClick={this.handleReset}>
-                                    Làm lại
-                                </Button>
+                        <Fragment>
+                            <div className={classes.selectLesson}>
+                                <Typography component="h4" variant="h4">
+                                    Cấu hình bạn chọn là :
+                                </Typography>
+                                <Typography>
+                                    Bài cần kiểm tra: <br />
+                                    {this.state.lessonIdList
+                                        .sort()
+                                        .map((id, i) => (
+                                            <Fragment key={i}>
+                                                <label>Bài {id} </label>
+                                                <br />
+                                            </Fragment>
+                                        ))}
+                                </Typography>
+                                <Typography>
+                                    Tổng số từ có trong bài kiểm tra sẽ là :{" "}
+                                    {this.state.settings.numberWords}
+                                </Typography>
+                                <Typography>
+                                    Tính năng kiểm tra Online :{" "}
+                                    {this.state.settings.examOnline
+                                        ? "Bật"
+                                        : "Tắt"}
+                                </Typography>
                             </div>
-                        </div>
+                            <div className={classes.btnArea}>
+                                <div className={classes.btnBackArea}>
+                                    <Button onClick={this.handleReset}>
+                                        Làm lại
+                                    </Button>
+                                </div>
+                                <div className={classes.btnNextArea}>
+                                    <Button
+                                        variant="contained"
+                                        color="primary"
+                                        onClick={this.handleFinish}
+                                        >
+                                        Bắt đầu
+                                    </Button>
+                                </div>
+                            </div>
+                        </Fragment>
                     ) : (
                         <Fragment>
                             <div className={classes.selectLesson}>
@@ -254,10 +312,7 @@ class Settings extends Component {
                                         color="primary"
                                         onClick={this.handleNext}
                                     >
-                                        {this.state.activeStep ===
-                                        listStep.length - 1
-                                            ? "Finish"
-                                            : "Tiếp theo"}
+                                        Tiếp theo
                                     </Button>
                                 </div>
                             </div>
