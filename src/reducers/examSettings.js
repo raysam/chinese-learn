@@ -5,21 +5,16 @@ var defaultState = {
     lessonIdList: [],
     settings: {
         numberWords: 0,
+        examTime: "0",
         examOnline: false
     }
 };
 
 var setSettings = (state = defaultState, action) => {
-    switch(action.type) {
-        case types.STEP1_DONE:
-            state.lessonIdList = action.lessonIdList;
-            return state;
-        case types.STEP2_DONE:
-            state.settings.numberWords = action.settings.numberWords;
-            return state;
-        default:
-            return state;
+    if (action.type === types.SETUP_SETTINGS) {
+        state = action.settings;
     }
+    return state;
 };
 
 export default setSettings;

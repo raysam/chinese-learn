@@ -8,7 +8,17 @@ const styles = theme => ({
         padding: 20
     },
     selectLesson: {
-        // marginBottom: 20
+        paddingBottom: 15,
+        borderBottom: "1px solid #ababab"
+    },
+    setMargin: {
+        marginBottom: 20
+    },
+    labelSet: {
+        marginBottom: 10
+    },
+    titleStep: {
+        marginBottom: 20
     },
     btnArea: {
         display: 'flex',
@@ -20,10 +30,6 @@ const styles = theme => ({
     btnNextArea: {
         width: "50%",
         textAlign: 'right'
-    },
-    labelSetting: {
-        display: 'block',
-        width: '100%'
     }
 });
 

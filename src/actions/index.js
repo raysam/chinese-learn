@@ -15,16 +15,9 @@ export const setAllWord = words => {
     }
 }
 
-export const setSettingStep1 = lessonIdList => {
+export const setSetting = settings => {
     return {
-        type: types.STEP1_DONE,
-        lessonIdList
-    }
-}
-
-export const setSettingStep2 = settings => {
-    return {
-        type: types.STEP2_DONE,
+        type: types.SETUP_SETTINGS,
         settings
     }
 }
