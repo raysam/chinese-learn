@@ -3,6 +3,13 @@ import styles from "./WordCss";
 import { withStyles, Card, CardContent, Typography, Divider } from "@material-ui/core";
 
 class Item extends Component {
+
+    handleVoice = e => {
+        console.log(e.target.dataset.src);
+        let audio = new Audio(e.target.dataset.src);
+        audio.play();
+    }
+
     render() {
         const { classes } = this.props;
         return (
@@ -12,7 +19,7 @@ class Item extends Component {
                         {this.props.pinyin}
                     </Typography>
                     <Typography className={classes.mainWord} component="h3" variant="h5">
-                        {this.props.word} - {this.props.mword}
+                        {this.props.word} - <span className={classes.mWord}>{this.props.mword}</span>
                     </Typography>
                     <Divider className={classes.dvWord} />
                     <Typography className={classes.meaning} componen="p">
@@ -25,7 +32,6 @@ class Item extends Component {
                         </Typography></Fragment>)
                         : ''
                     }
-                    
                 </CardContent>
             </Card>
         );

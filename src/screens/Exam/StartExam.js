@@ -1,11 +1,14 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
+import ActionBar from '../../components/UI/Exam/ActionBar';
+import WordList from '../../components/UI/Exam/List';
 
 class StartExam extends Component {
     render() {
         return (
-            <div>
-                Bắt đầu làm bài kiếm tra
-            </div>
+            <Fragment>
+                <WordList />
+                <ActionBar />
+            </Fragment>
         );
     }
 }

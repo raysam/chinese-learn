@@ -17,7 +17,6 @@ class Detail extends Component {
         
         const words = (lesson) ? sheetHelper.getWordsByParentId(listWord, [lesson.id]) : [];
 
-        console.log(words)
         const wordUI = (!words) ? "" : words.map((word, index) => {
             return (
                 <Grid item xs={3} key={index}>

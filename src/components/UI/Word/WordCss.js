@@ -3,16 +3,21 @@ const styles = theme => ({
         padding: 15
     },
     mainWord: {
-        fontFamily: theme.fonts.family.sC
+        fontFamily: theme.fonts.family.sC,
+        color: theme.colorSet.orange
+    },
+    mWord: {
+        fontFamily: theme.fonts.family.tC,
+        color: theme.colorSet.ufoGreen
     },
     pinyin: {
         fontFamily: "Tahoma, serif",
         fontSize: theme.fonts.size.sm,
-        color: "#bdb2b2",
+        color: theme.colorSet.skyBlue,
         lineHeight: 1
     },
     cardContent: {
-        padding: "0 !important"
+        padding: "0 !important",
     },
     dvWord: {
         margin: "10px 0"
@@ -20,11 +25,12 @@ const styles = theme => ({
     meaning: {
         fontFamily: "Arial, san-serif",
         fontSize: theme.fonts.size.ltn,
+        color: theme.colorSet.saturatedSky
     },
     note: {
-        color: theme.color.red,
+        color: theme.colorSet.watermelon,
         margin: 0
-    }
+    },
 });
 
 export default styles;

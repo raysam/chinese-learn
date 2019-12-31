@@ -1,8 +1,8 @@
 import React, { Component, Fragment } from "react";
-import Stepper from "@material-ui/core/Stepper";
-import Step from "@material-ui/core/Step";
-import StepLabel from "@material-ui/core/StepLabel";
 import {
+    Step,
+    Stepper,
+    StepLabel,
     Typography,
     Button,
     StepConnector,
@@ -14,12 +14,11 @@ import {
     FormControl,
     RadioGroup,
     Radio,
-    FormHelperText
+    Checkbox
 } from "@material-ui/core";
 import { red } from "@material-ui/core/colors";
 import styles from "./ExamCss";
 import { withStyles } from "@material-ui/styles";
-import Checkbox from "@material-ui/core/Checkbox";
 import BookmarkIcon from "@material-ui/icons/Bookmark";
 import BookmarkBorderIcon from "@material-ui/icons/BookmarkBorder";
 import FiberNewIcon from "@material-ui/icons/FiberNew";
@@ -71,7 +70,7 @@ class Settings extends Component {
         maxLengthWord: 0,
         settings: {
             numberWords: 0,
-            examTime: "20",
+            examTime: "30",
             examOnline: false
         },
         redirect: false,
@@ -254,11 +253,10 @@ class Settings extends Component {
                         </FormControl>
                         <FormControl component="fieldset" fullWidth className={classes.setMargin}>
                             <FormLabel component="legend" focused={false} className={classes.labelSet}>Thời gian kiểm tra:</FormLabel>
-                            <FormHelperText>thời gian cho 1 câu trả lời là:<br/>Chậm: 20 giây<br/>Bình Thường: 10 giây<br/>Nhanh: 5 giây</FormHelperText>
                             <RadioGroup aria-label="speedtime" name="speedtime" value={this.state.settings.examTime} onChange={this.handleRadioChange}>
-                                <FormControlLabel value="20" control={<Radio color="primary" />} label="Chậm" />
-                                <FormControlLabel value="10" control={<Radio color="primary" />} label="Bình Thường" />
-                                <FormControlLabel value="5" control={<Radio color="primary" />} label="Nhanh" />
+                                <FormControlLabel value="30" control={<Radio color="primary" />} label="Chậm (30 giây / câu)" />
+                                <FormControlLabel value="15" control={<Radio color="primary" />} label="Bình Thường (15 giây / câu)" />
+                                <FormControlLabel value="10" control={<Radio color="primary" />} label="Nhanh (10 giây / câu)" />
                             </RadioGroup>
                         </FormControl>
                         <FormControl component="fieldset" fullWidth>
