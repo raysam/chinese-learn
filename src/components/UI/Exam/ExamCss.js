@@ -50,6 +50,9 @@ const styles = theme => ({
     },
     rightSide: {
         float: 'right',
+        "&>*": {
+            marginLeft: 20
+        }
     },
     testCard: {
         padding: 15
