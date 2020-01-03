@@ -124,6 +124,7 @@ class Settings extends Component {
 
     handleFinish = () => {
         this.props.onSetSetting({
+            allSetting: true,
             lessonIdList: this.props.lessonIdList,
             settings: this.props.settings
         });

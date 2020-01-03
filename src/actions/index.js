@@ -21,3 +21,9 @@ export const setSetting = settings => {
         settings
     }
 }
+
+export const setExamStatus = () => {
+    return {
+        type: types.EXAM_STATUS
+    }
+}

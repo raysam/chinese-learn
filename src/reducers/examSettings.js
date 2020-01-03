@@ -2,6 +2,7 @@ import * as types from '../constansts/ActiveTypes';
 
 
 var defaultState = {
+    allSetting: false,
     lessonIdList: [],
     settings: {
         numberWords: 0,
