@@ -19,7 +19,7 @@ class Item extends Component {
                         {this.props.pinyin}
                     </Typography>
                     <Typography className={classes.mainWord} component="h3" variant="h5">
-                        {this.props.word} - {(this.props.mword) ? (<span className={classes.mWord}> - {this.props.mword}</span>) : '' }
+                        {this.props.word} {(this.props.mword) ? (<span className={classes.mWord}>- {this.props.mword}</span>) : '' }
                     </Typography>
                     <Divider className={classes.dvWord} />
                     <Typography className={classes.meaning} componen="p">
