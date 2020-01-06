@@ -67,6 +67,7 @@ const RedCheckbox = withStyles({
 class Settings extends Component {
     state = {
         lessonIdList: [],
+        wordFilter: [],
         maxLengthWord: 0,
         settings: {
             numberWords: 0,
@@ -84,18 +85,37 @@ class Settings extends Component {
                 this.props.onSetWord(sheetHelper.getAllWords(wordresp));
             });
         });
+        this.props.onSetSetting({
+            allSetting: false,
+            lessonIdList: [],
+            wordFilter: [],
+            settings: {
+                numberWords: 0,
+                examTime: "0",
+                examOnline: false
+            }
+        });
     }
 
     handleNext = () => {
         const { activeStep } = this.state;
         if (activeStep === 0) {
+            if (this.state.lessonIdList === undefined || this.state.lessonIdList.length === 0) {
+                return;
+            }
             let words = sheetHelper.getWordsByParentId(
                 this.props.listWord,
                 this.state.lessonIdList
             );
             this.setState({
+                wordFilter: words,
                 maxLengthWord: words.length
             });
+        }
+        if (activeStep === 1) {
+            if (this.state.settings.numberWords === 0) {
+                return;
+            }
         }
         this.setState({
             activeStep: activeStep + 1
@@ -112,9 +132,11 @@ class Settings extends Component {
     handleReset = () => {
         this.setState({
             lessonIdList: [],
+            wordFilter: [],
             maxLengthWord: 0,
             settings: {
                 numberWords: 0,
+                examTime: "30",
                 examOnline: false
             },
             redirect: false,
@@ -125,8 +147,9 @@ class Settings extends Component {
     handleFinish = () => {
         this.props.onSetSetting({
             allSetting: true,
-            lessonIdList: this.props.lessonIdList,
-            settings: this.props.settings
+            lessonIdList: this.state.lessonIdList,
+            wordFilter: this.state.wordFilter,
+            settings: this.state.settings
         });
         this.setState({
             redirect: true
@@ -183,7 +206,7 @@ class Settings extends Component {
                         >
                             {listLabel[step]}
                         </Typography>
-                        <FormControl component="fieldset" fullWidth>
+                        <FormControl component="fieldset" fullWidth required>
                             <FormLabel component="legend" focused={false} className={classes.labelSet}>
                                 Danh sách các bài kiểm tra:
                             </FormLabel>
@@ -244,11 +267,12 @@ class Settings extends Component {
                                     defaultValue={0}
                                     aria-labelledby="discrete-slider-small-steps"
                                     step={1}
-                                    marks
+                                    marks={[{value:0, label: '0'},{value: this.state.maxLengthWord, label: `${this.state.maxLengthWord}`}]}
                                     min={0}
                                     max={this.state.maxLengthWord}
                                     valueLabelDisplay="on"
                                     onChange={this.setupNumberWord}
+                                    classes={{valueLabel: classes.botLabel, markLabel: classes.rePosMark}}
                                 />
                             </FormGroup>
                         </FormControl>

@@ -12,7 +12,7 @@ const styles = theme => ({
         borderBottom: "1px solid #ababab"
     },
     setMargin: {
-        marginBottom: 20
+        marginBottom: 40
     },
     labelSet: {
         marginBottom: 10
@@ -54,8 +54,12 @@ const styles = theme => ({
             marginLeft: 20
         }
     },
+    listContainer: {
+        paddingBottom: 65
+    },
     testCard: {
-        padding: 15
+        padding: 15,
+        minHeight: 90,
     },
     cardContent: {
         padding: "0 !important",
@@ -81,6 +85,24 @@ const styles = theme => ({
         fontFamily: "Arial, san-serif",
         fontSize: theme.fonts.size.lg,
         color: theme.colorSet.saturatedSky
+    },
+    enTest: {
+        minHeight: 144,
+        '& $meaning': {
+            fontSize: `${theme.fonts.size.sm}px !important`
+        }
+    },
+    botLabel: {
+        top: 34,
+        '&>*': {
+            transform: 'rotate(135deg)',
+            '&>*': {
+                transform: 'rotate(-135deg)'
+            }
+        }
+    },
+    rePosMark: {
+        top: 37
     }
 });
 

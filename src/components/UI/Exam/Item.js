@@ -13,24 +13,24 @@ class Item extends Component {
         const { classes } = this.props;
 
         return (
-            <Card className={classes.testCard}>
+            <Card className={classes.testCard  + ((this.props.status) ? ' '+classes.enTest: '')}>
                 <CardContent className={classes.cardContent}>
-                    <Typography className={classes.meaning} componen="p">
-                        Ý Nghĩa : {this.props.mean}
-                    </Typography>
                     {
                         (this.props.status) ?
                         (<Fragment>
-                            <Divider className={classes.dvWord} />
                             <Typography className={classes.pinyin} component="label">
                                 {this.props.pinyin}
                             </Typography>
                             <Typography className={classes.mainWord} component="h3" variant="h5">
                                 {this.props.word} {(this.props.mword) ? (<span className={classes.mWord}>- {this.props.mword}</span>) : '' }
                             </Typography>
+                            <Divider className={classes.dvWord} />
                         </Fragment>)
                         : ''
                     }
+                    <Typography className={classes.meaning} componen="p">
+                        Ý Nghĩa : {this.props.mean}
+                    </Typography>
                 </CardContent>
             </Card>
         );

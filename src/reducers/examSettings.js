@@ -4,6 +4,7 @@ import * as types from '../constansts/ActiveTypes';
 var defaultState = {
     allSetting: false,
     lessonIdList: [],
+    wordFilter: [],
     settings: {
         numberWords: 0,
         examTime: "0",

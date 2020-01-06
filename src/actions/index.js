@@ -27,3 +27,9 @@ export const setExamStatus = () => {
         type: types.EXAM_STATUS
     }
 }
+
+export const setExamStatusFalse = () => {
+    return {
+        type: types.EXAM_STATUS_FALSE
+    }
+}
