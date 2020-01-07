@@ -206,7 +206,7 @@ class Settings extends Component {
                         >
                             {listLabel[step]}
                         </Typography>
-                        <FormControl component="fieldset" fullWidth required>
+                        <FormControl component="fieldset" fullWidth>
                             <FormLabel component="legend" focused={false} className={classes.labelSet}>
                                 Danh sách các bài kiểm tra:
                             </FormLabel>

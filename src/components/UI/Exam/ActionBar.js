@@ -39,7 +39,7 @@ class ActionBar extends Component {
 
         return (
             <div className={classes.actionBar}>
-                <Typography component="span" className={classes.timer}>Thời gian kiểm tra: <Timer second={seconds} statis={this.examStatus} /></Typography>
+                <Typography component="span" className={classes.timer}>TGKT: <Timer second={seconds} statis={this.examStatus} /></Typography>
                 <div className={classes.rightSide}>
                     {/* <Button variant="contained" color="primary">
                         Tạm dừng

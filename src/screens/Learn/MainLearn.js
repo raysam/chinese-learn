@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Switch, Route } from "react-router-dom";
 import { withStyles } from '@material-ui/styles';
 import LessonList from '../../components/UI/Lesson/List';
@@ -11,7 +11,7 @@ class MainLearn extends Component {
         const { match, classes } = this.props;
         
         return (
-            <div>
+            <Fragment>
                 <LessonList match={match.match}/>
                 <div className={classes.mainContent}>
                     <Switch>
@@ -19,7 +19,7 @@ class MainLearn extends Component {
                         <Route render={() => <div>Vui lòng chọn 1 bài để bắt đầu học</div>}/>
                     </Switch>
                 </div>
-            </div>
+            </Fragment>
         )
     }
 }

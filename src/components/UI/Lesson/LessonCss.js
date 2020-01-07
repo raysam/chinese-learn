@@ -9,8 +9,21 @@ const styles = theme => ({
         boxShadow: '5px 0px 10px 0px rgba(0,0,0,0.2)',
         overflow: 'hidden',
         height: "calc( 100vh - 65px )",
+        "&>div": {
+            maxHeight: 'calc(100vh - 65px)'
+        },
         [theme.breakpoints.down('lg')]: {
             width: 300
+        },
+        [theme.breakpoints.down('sm')]: {
+            width: '100%',
+            position: 'static',
+            height: 250,
+            boxShadow: '5px 0px 10px 0px rgba(0,0,0,0.2)',
+            marginBottom: 20,
+            "&>div": {
+                maxHeight: 250
+            }
         }
     },
     listLesson: {
@@ -20,6 +33,9 @@ const styles = theme => ({
         paddingLeft: 400,
         [theme.breakpoints.down('lg')]: {
             paddingLeft: 300
+        },
+        [theme.breakpoints.down('sm')]: {
+            paddingLeft: 0
         }
     },
     chipRoot: {

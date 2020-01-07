@@ -49,7 +49,7 @@ class List extends Component {
             <Fragment>
                 <div className={classes.navList}>
                     <SimpleBar
-                        style={{ maxHeight: "calc(100vh)" }}
+                        // style={{ maxHeight: "calc(100vh)" }}
                         forceVisible="y"
                         autoHide="false"
                     >
