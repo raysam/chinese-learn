@@ -20,13 +20,6 @@ class Timer extends Component {
         this.setState({
             time: timeLeftVar
         });
-        if (!this.state.examStatus) {
-            if (this.timer === 0 && this.state.second > 0) {
-                this.timer = setInterval(this.countDown, 1000);
-            }
-        } else {
-            clearInterval(this.timer);
-        }
     }
 
     countDown = () => {
@@ -43,7 +36,13 @@ class Timer extends Component {
     }
 
     render() {
-        
+        if (!this.props.examStatus) {
+            if (this.timer === 0 && this.state.second > 0) {
+                this.timer = setInterval(this.countDown, 1000);
+            }
+        } else {
+            clearInterval(this.timer);
+        }
         return (
             <Fragment>
                 {this.state.time}
