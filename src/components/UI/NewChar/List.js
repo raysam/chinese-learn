@@ -55,32 +55,34 @@ class List extends Component {
                             </Typography>
                         </Box>
                     </Box>
-                    <Table className={classes.tableParent}>
-                        <TableHead className={classes.tableHead}>
-                            <TableRow>
-                                <TableCell className={classes.colWidth10}>
-                                    STT
-                                </TableCell>
-                                <TableCell className={classes.colWidth17}>
-                                    Giản thể
-                                </TableCell>
-                                <TableCell className={classes.colWidth17}>
-                                    Phồn thể
-                                </TableCell>
-                                <TableCell className={classes.colWidth17}>
-                                    Phiên âm
-                                </TableCell>
-                                <TableCell className={classes.colWidth40}>
-                                    Ý nghĩa
-                                </TableCell>
-                            </TableRow>
-                        </TableHead>
-                        <TableBody>
-                            {
-                                wrapWord
-                            }
-                        </TableBody>
-                    </Table>
+                    <div className={classes.scrollMobile} >
+                        <Table className={classes.tableParent}>
+                            <TableHead className={classes.tableHead}>
+                                <TableRow>
+                                    <TableCell className={classes.colWidth10}>
+                                        STT
+                                    </TableCell>
+                                    <TableCell className={classes.colWidth17}>
+                                        Giản thể
+                                    </TableCell>
+                                    <TableCell className={classes.colWidth17}>
+                                        Phồn thể
+                                    </TableCell>
+                                    <TableCell className={classes.colWidth17}>
+                                        Phiên âm
+                                    </TableCell>
+                                    <TableCell className={classes.colWidth40}>
+                                        Ý nghĩa
+                                    </TableCell>
+                                </TableRow>
+                            </TableHead>
+                            <TableBody>
+                                {
+                                    wrapWord
+                                }
+                            </TableBody>
+                        </Table>
+                    </div>
                 </Paper>
             </Fragment>
         );

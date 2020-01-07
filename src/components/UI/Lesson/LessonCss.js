@@ -8,13 +8,19 @@ const styles = theme => ({
         backgroundColor: "#effbfb",
         boxShadow: '5px 0px 10px 0px rgba(0,0,0,0.2)',
         overflow: 'hidden',
-        height: "calc( 100vh - 65px )"
+        height: "calc( 100vh - 65px )",
+        [theme.breakpoints.down('lg')]: {
+            width: 300
+        }
     },
     listLesson: {
         padding: "10px 0"
     },
     mainContent: {
-        paddingLeft: 400
+        paddingLeft: 400,
+        [theme.breakpoints.down('lg')]: {
+            paddingLeft: 300
+        }
     },
     chipRoot: {
         width: "100%",
@@ -43,7 +49,6 @@ const styles = theme => ({
             backgroundColor: "#f84949"
         }
     },
-    abc: {}
 });
 
 export default styles;

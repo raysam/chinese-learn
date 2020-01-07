@@ -27,7 +27,7 @@ const styles = theme => ({
         color: "#a8a8a8"
     },
     tableParent: {
-        
+        minWidth: 900
     },
     tableHead: {
         backgroundColor: theme.palette.common.black,
@@ -48,6 +48,10 @@ const styles = theme => ({
     colWidth40: { width: "42.5%" },
     colWidth17: { width: "17.5%" },
     colWidth10: { width: "5%" },
+    scrollMobile: {
+        width: '100%',
+        overflowX: 'auto'
+    }
 });
 
 export default styles;

@@ -29,41 +29,49 @@ class List extends Component {
     render() {
         var { listLesson, listWord } = this.props;
 
+        let items = [
+            {
+                title: "Số từ hiện có",
+                value: listWord.length,
+                color: "red",
+                icon: <Translate fontSize="large" />
+            },
+            {
+                title: "Số bài hiện có",
+                value: listLesson.length,
+                color: "green",
+                icon: <LocalLibrary fontSize="large" />
+            },
+            {
+                title: "Lần cập nhật cuối vào lúc",
+                value: this.state.updateDate,
+                color: "violet",
+                icon: <Update fontSize="large" />
+            },
+            {
+                title: "Người dùng",
+                value: "0",
+                color: "black",
+                icon: <Face fontSize="large" />
+            }
+        ]
+
         return (
             <Grid container justify="center" spacing={2}>
-                <Grid item xs={3}>
-                    <BlockItem
-                        readmore={true}
-                        title="Số từ hiện có"
-                        value={listWord.length}
-                        color="red"
-                        icon={<Translate fontSize="large" />}
-                    />
-                </Grid>
-                <Grid item xs={3}>
-                    <BlockItem
-                        title="Số bài hiện có"
-                        value={listLesson.length}
-                        color="green"
-                        icon={<LocalLibrary fontSize="large" />}
-                    />
-                </Grid>
-                <Grid item xs={3}>
-                    <BlockItem
-                        title="Lần cập nhật cuối vào lúc"
-                        value={this.state.updateDate}
-                        color="violet"
-                        icon={<Update fontSize="large" />}
-                    />
-                </Grid>
-                <Grid item xs={3}>
-                    <BlockItem
-                        title="Người dùng"
-                        value="0"
-                        color="black"
-                        icon={<Face fontSize="large" />}
-                    />
-                </Grid>
+                {
+                    items.map((v, i) => {
+                        return (
+                            <Grid item xs={12} sm={6} md={6} lg={3} key={i}>
+                                <BlockItem
+                                    title={v.title}
+                                    value={v.value}
+                                    color={v.color}
+                                    icon={v.icon}
+                                />
+                            </Grid>
+                        )
+                    })
+                }
             </Grid>
         );
     }

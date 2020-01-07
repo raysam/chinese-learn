@@ -56,6 +56,14 @@ const styles = theme => ({
     iconMainBlack: {
         background: "linear-gradient(60deg, #0c1445, #471e54)",
         boxShadow: "0 4px 20px 0 rgba(0, 0, 0,.14), 0 7px 10px -5px rgba(77, 32, 90,.4)"
+    },
+    h4Value: {
+        [theme.breakpoints.down('sm')]: {
+            fontSize: 30
+        },
+        [theme.breakpoints.down('xs')]: {
+            fontSize: 20
+        }
     }
 });
 

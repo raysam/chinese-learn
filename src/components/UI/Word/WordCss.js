@@ -1,6 +1,7 @@
 const styles = theme => ({
     mainCard: {
-        padding: 15
+        padding: 15,
+        height: "100%"
     },
     mainWord: {
         fontFamily: theme.fonts.family.sC,

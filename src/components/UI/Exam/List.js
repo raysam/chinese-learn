@@ -25,7 +25,7 @@ class List extends Component {
                     {
                         wordReorder.map((word, i) => {
                             return (
-                                <Grid item xs={6} sm={3} key={i}>
+                                <Grid item xs={12} sm={6} md={3} key={i}>
                                     <WordItem
                                         pinyin={word.pinyin}
                                         word={word.word}

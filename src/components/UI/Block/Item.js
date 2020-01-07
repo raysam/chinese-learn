@@ -36,7 +36,7 @@ class Item extends Component {
                         <Box component="span" className={classes.miniTextGray}>
                             {this.props.title}
                         </Box>
-                        <Typography variant="h4" component="h4">
+                        <Typography variant="h4" component="h4" className={classes.h4Value}>
                             {this.props.value}
                         </Typography>
                     </Box>
