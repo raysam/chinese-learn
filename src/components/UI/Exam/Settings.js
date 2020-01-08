@@ -14,12 +14,14 @@ import {
     FormControl,
     RadioGroup,
     Radio,
-    Checkbox
+    Checkbox,
+    Grid,
 } from "@material-ui/core";
 import { red } from "@material-ui/core/colors";
 import styles from "./ExamCss";
 import { withStyles } from "@material-ui/styles";
 import BookmarkIcon from "@material-ui/icons/Bookmark";
+import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 import BookmarkBorderIcon from "@material-ui/icons/BookmarkBorder";
 import FiberNewIcon from "@material-ui/icons/FiberNew";
 import FiberNewOutlinedIcon from "@material-ui/icons/FiberNewOutlined";
@@ -100,7 +102,10 @@ class Settings extends Component {
     handleNext = () => {
         const { activeStep } = this.state;
         if (activeStep === 0) {
-            if (this.state.lessonIdList === undefined || this.state.lessonIdList.length === 0) {
+            if (
+                this.state.lessonIdList === undefined ||
+                this.state.lessonIdList.length === 0
+            ) {
                 return;
             }
             let words = sheetHelper.getWordsByParentId(
@@ -178,10 +183,20 @@ class Settings extends Component {
             settings: {
                 numberWords: prevState.settings.numberWords,
                 examTime: value,
-                examOnline: false
+                examOnline: prevState.settings.examOnline
             }
-        }))
-    }
+        }));
+    };
+
+    handleSwitchChange = e => {
+        this.setState(prevState => ({
+            settings: {
+                numberWords: prevState.settings.numberWords,
+                examTime: prevState.settings.examTime,
+                examOnline: !prevState.settings.examOnline
+            }
+        }));
+    };
 
     setupNumberWord = (e, v) => {
         let value = v;
@@ -189,7 +204,7 @@ class Settings extends Component {
             settings: {
                 numberWords: value,
                 examTime: prevState.settings.examTime,
-                examOnline: false
+                examOnline: prevState.settings.examOnline
             }
         }));
     };
@@ -207,7 +222,11 @@ class Settings extends Component {
                             {listLabel[step]}
                         </Typography>
                         <FormControl component="fieldset" fullWidth>
-                            <FormLabel component="legend" focused={false} className={classes.labelSet}>
+                            <FormLabel
+                                component="legend"
+                                focused={false}
+                                className={classes.labelSet}
+                            >
                                 Danh sách các bài kiểm tra:
                             </FormLabel>
                             <FormGroup row>
@@ -258,8 +277,16 @@ class Settings extends Component {
                         >
                             {listLabel[step]}
                         </Typography>
-                        <FormControl component="fieldset" fullWidth className={classes.setMargin}>
-                            <FormLabel component="legend" focused={false} className={classes.labelSet}>
+                        <FormControl
+                            component="fieldset"
+                            fullWidth
+                            className={classes.setMargin}
+                        >
+                            <FormLabel
+                                component="legend"
+                                focused={false}
+                                className={classes.labelSet}
+                            >
                                 Số lượng từ cần kiểm tra:
                             </FormLabel>
                             <FormGroup>
@@ -267,35 +294,87 @@ class Settings extends Component {
                                     defaultValue={0}
                                     aria-labelledby="discrete-slider-small-steps"
                                     step={1}
-                                    marks={[{value:0, label: '0'},{value: this.state.maxLengthWord, label: `${this.state.maxLengthWord}`}]}
+                                    marks={[
+                                        { value: 0, label: "0" },
+                                        {
+                                            value: this.state.maxLengthWord,
+                                            label: `${this.state.maxLengthWord}`
+                                        }
+                                    ]}
                                     min={0}
                                     max={this.state.maxLengthWord}
                                     valueLabelDisplay="on"
                                     onChange={this.setupNumberWord}
-                                    classes={{valueLabel: classes.botLabel, markLabel: classes.rePosMark}}
+                                    classes={{
+                                        valueLabel: classes.botLabel,
+                                        markLabel: classes.rePosMark
+                                    }}
                                 />
                             </FormGroup>
                         </FormControl>
-                        <FormControl component="fieldset" fullWidth className={classes.setMargin}>
-                            <FormLabel component="legend" focused={false} className={classes.labelSet}>Thời gian kiểm tra:</FormLabel>
-                            <RadioGroup aria-label="speedtime" name="speedtime" value={this.state.settings.examTime} onChange={this.handleRadioChange}>
-                                <FormControlLabel value="30" control={<Radio color="primary" />} label="Chậm (30 giây / câu)" />
-                                <FormControlLabel value="15" control={<Radio color="primary" />} label="Bình Thường (15 giây / câu)" />
-                                <FormControlLabel value="10" control={<Radio color="primary" />} label="Nhanh (10 giây / câu)" />
+                        <FormControl
+                            component="fieldset"
+                            fullWidth
+                            className={classes.setMargin}
+                        >
+                            <FormLabel
+                                component="legend"
+                                focused={false}
+                                className={classes.labelSet}
+                            >
+                                Thời gian kiểm tra:
+                            </FormLabel>
+                            <RadioGroup
+                                aria-label="speedtime"
+                                name="speedtime"
+                                value={this.state.settings.examTime}
+                                onChange={this.handleRadioChange}
+                            >
+                                <FormControlLabel
+                                    value="30"
+                                    control={<Radio color="primary" />}
+                                    label="Chậm (30 giây / câu)"
+                                />
+                                <FormControlLabel
+                                    value="15"
+                                    control={<Radio color="primary" />}
+                                    label="Bình Thường (15 giây / câu)"
+                                />
+                                <FormControlLabel
+                                    value="10"
+                                    control={<Radio color="primary" />}
+                                    label="Nhanh (10 giây / câu)"
+                                />
                             </RadioGroup>
                         </FormControl>
                         <FormControl component="fieldset" fullWidth>
-                            <FormLabel component="legend" focused={false} className={classes.labelSet}>
+                            <FormLabel
+                                component="legend"
+                                focused={false}
+                                className={classes.labelSet}
+                            >
                                 Kiểm tra Online
                             </FormLabel>
                             <FormGroup>
-                                <Switch
-                                    value="true"
-                                    inputProps={{
-                                        "aria-label": "primary checkbox"
-                                    }}
-                                    disabled
-                                />
+                                <Grid
+                                    component="label"
+                                    container
+                                    alignItems="center"
+                                    spacing={1}
+                                >
+                                    <Grid item>Tắt</Grid>
+                                    <Grid item>
+                                        <Switch
+                                            checked={
+                                                this.state.settings.examOnline
+                                            }
+                                            onChange={this.handleSwitchChange}
+                                            color="primary"
+                                            value="true"
+                                        />
+                                    </Grid>
+                                    <Grid item>Bật</Grid>
+                                </Grid>
                             </FormGroup>
                         </FormControl>
                     </Fragment>
@@ -355,7 +434,14 @@ class Settings extends Component {
                                 </Typography>
                                 <Typography className={classes.setMargin}>
                                     Tổng thời gian làm bài sẽ là :
-                                    {` ${this.state.settings.numberWords} x ${this.state.settings.examTime} = ${this.state.settings.numberWords*this.state.settings.examTime} giây = ${helper.calcTime(this.state.settings.numberWords*this.state.settings.examTime)}`}
+                                    {` ${this.state.settings.numberWords} x ${
+                                        this.state.settings.examTime
+                                    } = ${this.state.settings.numberWords *
+                                        this.state.settings
+                                            .examTime} giây = ${helper.calcTime(
+                                        this.state.settings.numberWords *
+                                            this.state.settings.examTime
+                                    )}`}
                                 </Typography>
                                 <Typography>
                                     Tính năng kiểm tra Online :{" "}
@@ -363,6 +449,16 @@ class Settings extends Component {
                                         ? "Bật"
                                         : "Tắt"}
                                 </Typography>
+                                <div className={classes.infoNote} >
+                                    <div className={classes.infoIcon}>
+                                        <InfoOutlinedIcon style={{color: '#fff'}} fontSize="small" />
+                                    </div>
+                                    <div className={classes.infoMess}>
+                                        <span className={classes.infoTitle}>Chú ý</span>
+                                        <p>Bài kiểm tra là dựa trên ý thức cá nhân, bạn hoàn toàn có thể tra từ điển, dùng google dịch, hoặc các công cụ khác. Bạn càng nghiêm túc thì kết quả phản ánh ra càng chính xác với trình độ thực tế của bạn</p>
+                                    </div>
+                                    
+                                </div>
                             </div>
                             <div className={classes.btnArea}>
                                 <div className={classes.btnBackArea}>

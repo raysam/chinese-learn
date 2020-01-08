@@ -81,6 +81,16 @@ const styles = theme => ({
     dvWord: {
         margin: "10px 0"
     },
+    correctWord: {
+        fontFamily: theme.fonts.family.sC,
+        color: theme.colorSet.limeSoap,
+        fontSize: theme.fonts.size.sm
+    },
+    errorWord: {
+        fontFamily: theme.fonts.family.sC,
+        color: theme.colorSet.watermelon,
+        fontSize: theme.fonts.size.sm
+    },
     meaning: {
         fontFamily: "Arial, san-serif",
         fontSize: theme.fonts.size.lg,
@@ -103,7 +113,39 @@ const styles = theme => ({
     },
     rePosMark: {
         top: 37
-    }
+    },
+    infoNote: {
+        display: 'flex',
+        padding: '6px 16px',
+        fontSize: '0.875rem',
+        fontWeight: 400,
+        lineHeight: 1.43,
+        borderRadius: 4,
+        marginTop: 20,
+        letterSpacing: '0.01071em',
+        backgroundColor: theme.colorSet.clearChill
+    },
+    infoIcon: {
+        display: 'flex',
+        opacity: 0.9,
+        padding: '7px 0',
+        fontSize: 22,
+        marginRight: 12,
+    },
+    infoMess: {
+        display: 'flex',
+        padding: '8px 0',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        color: '#fff'
+    },
+    infoTitle: {
+        fontFamily: '"Arial", sans-serif',
+        fontSize: 14,
+        fontWeight: 'bold',
+        lineHeight: 1.5,
+        letterSpacing: 1
+    },
 });
 
 export default styles;
