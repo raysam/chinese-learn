@@ -3,3 +3,6 @@ export const SHOW_ALL_WORD = 'SHOW_ALL_WORD';
 export const SETUP_SETTINGS = 'SETUP_SETTINGS';
 export const EXAM_STATUS = 'EXAM_STATUS';
 export const EXAM_STATUS_FALSE = 'EXAM_STATUS_FALSE';
+export const EXAM_CHECKED = 'EXAM_CHECKED';
+export const EXAM_UNCHECK = 'EXAM_UNCHECK';
+export const EXAM_SCORES = 'EXAM_SCORES';

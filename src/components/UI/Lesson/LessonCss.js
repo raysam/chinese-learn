@@ -46,23 +46,24 @@ const styles = theme => ({
         width: "100%",
         justifyContent: "end",
         transition: "all 0.5s linear",
-        backgroundColor: theme.color.greedLight,
-        color: "#fff",
+        backgroundColor: theme.color.lightBlue,
+        color: "#000",
         border: "1px solid transparent",
         "&:hover": {
-            backgroundColor: theme.color.greedSalk
+            backgroundColor: theme.color.skyBlue,
         },
         "&.active": {
-            backgroundColor: theme.color.greed,
-            borderColor: theme.color.greedDark
+            backgroundColor: theme.color.blue,
+            borderColor: theme.colorSet.clearChill,
+            color: '#fff'
         },
         "& > .MuiAvatar-colorDefault": {
             color: '#fff',
-            backgroundColor: theme.color.greedDark
+            backgroundColor: theme.colorSet.clearChill
         },
         "&.new > .MuiAvatar-colorDefault": {
             color: "#fff",
-            backgroundColor: "#f84949"
+            backgroundColor: theme.colorSet.watermelon
         }
     },
 });

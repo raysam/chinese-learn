@@ -40,17 +40,20 @@ class Menu extends React.Component {
             {
                 path: "/",
                 label: "Trang chủ",
-                icon: <HomeIcon className={classes.menuItemColor} />
+                icon: <HomeIcon className={classes.menuItemColorBlue} />,
+                color: classes.menuItemColorBlue
             },
             {
                 path: "/learn",
                 label: "Học Tập",
-                icon: <LocalLibraryIcon className={classes.menuItemColor} />
+                icon: <LocalLibraryIcon className={classes.menuItemColorOrange} />,
+                color: classes.menuItemColorOrange
             },
             {
                 path: "/exam",
                 label: "Kiểm Tra",
-                icon: <SpellcheckIcon className={classes.menuItemColor} />
+                icon: <SpellcheckIcon className={classes.menuItemColorTomato} />,
+                color: classes.menuItemColorTomato
             }
         ];
 
@@ -84,6 +87,7 @@ class Menu extends React.Component {
                                             button
                                             key={index}
                                             onClick={this.toggleDrawer(false)}
+                                            className={menu.color}
                                         >
                                             <ListItemIcon>
                                                 {menu.icon}

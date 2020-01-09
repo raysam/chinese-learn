@@ -11,13 +11,13 @@ import { connect } from "react-redux";
 
 class Item extends Component {
     render() {
-        const { classes } = this.props;
+        const { classes, examStatus } = this.props;
 
         return (
-            <Card className={classes.testCard  + ((this.props.status) ? ' '+classes.enTest: '')}>
+            <Card className={classes.testCard  + ((examStatus) ? ' '+classes.enTest: '')}>
                 <CardContent className={classes.cardContent}>
                     {
-                        (this.props.status) ?
+                        (examStatus) ?
                         (<Fragment>
                             <Typography className={classes.pinyin} component="label">
                                 {this.props.pinyin}

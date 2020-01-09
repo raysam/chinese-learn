@@ -31,6 +31,7 @@ class Item extends Component {
                     activeClassName={this.props.activeClassName ? this.props.activeClassName : false}
                     className={classes.chipMain + " " + this.props.new}
                     label={this.props.children}
+                    classes={{avatar: classes.avatarColor}}
                 />
             </div>
         );

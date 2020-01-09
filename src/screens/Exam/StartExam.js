@@ -1,16 +1,15 @@
 import React, { Component, Fragment } from 'react';
-import ActionBar from '../../components/UI/Exam/ActionBar';
 import WordList from '../../components/UI/Exam/List';
+import CountTime from '../../components/UI/Exam/CountTime';
+import ActionButton from '../../components/UI/Exam/ActionButton';
 
 class StartExam extends Component {
-    state = {
-        examStatus: false
-    }
     render() {
         return (
             <Fragment>
-                <WordList examStatus={this.state.examStatus}  />
-                <ActionBar examStatus={this.state.examStatus} />
+                <WordList />
+                <CountTime />
+                <ActionButton />
             </Fragment>
         );
     }

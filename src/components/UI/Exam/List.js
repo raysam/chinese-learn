@@ -5,9 +5,14 @@ import { Grid } from "@material-ui/core";
 import styles from "./ExamCss";
 import { withStyles } from "@material-ui/styles";
 import { connect } from "react-redux";
+import * as actions from "../../../actions";
 import { Redirect } from "react-router-dom";
 
 class List extends Component {
+
+    componentDidMount = () => {
+        this.props.onSetStatusFalse();
+    }
 
     render() {
         const { examSettings, classes } = this.props;
@@ -47,4 +52,12 @@ const mapState = state => {
     };
 };
 
-export default connect(mapState, null)(withStyles(styles)(List));
+const mapDispatch = (dispatch, props) => {
+    return {
+        onSetStatusFalse: () => {
+            dispatch(actions.setExamStatusFalse());
+        }
+    };
+};
+
+export default connect(mapState, mapDispatch)(withStyles(styles)(List));

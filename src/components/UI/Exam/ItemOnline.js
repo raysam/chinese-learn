@@ -9,6 +9,7 @@ import {
     TextField 
 } from "@material-ui/core";
 import { connect } from "react-redux";
+import * as actions from "../../../actions";
 
 class ItemOnline extends Component {
     state = {
@@ -17,7 +18,7 @@ class ItemOnline extends Component {
     }
 
     handleChange = e => {
-        if (this.props.word === e.target.value) {
+        if (this.props.word === e.target.value || this.props.mword === e.target.value) {
             this.setState({
                 value: e.target.value,
                 mark: true
@@ -30,9 +31,18 @@ class ItemOnline extends Component {
         }
     }
 
+    componentDidUpdate() {
+        console.log(this.propsexamCheck);
+        // if (examCheck.examCheck) {
+        //     if (this.state.mark) {
+        //         this.props.onCountWord();
+        //     }
+        // }
+    }
+
     render() {
         const { classes } = this.props;
-        
+
         return (
             <Card className={classes.testCard + ((this.props.examStatus) ? ' '+classes.enTest : '')}>
                 <CardContent className={classes.cardContent}>
@@ -67,8 +77,17 @@ class ItemOnline extends Component {
 
 const mapState = state => {
     return {
-        examStatus: state.examStatus
+        examStatus: state.examStatus,
+        examCheck: state.examCheck
     };
 };
 
-export default connect(mapState, null)(withStyles(styles)(ItemOnline));
+const mapDispatch = (dispatch, props) => {
+    return {
+        onCountWord: () => {
+            dispatch(actions.setExamScores());
+        },
+    };
+};
+
+export default connect(mapState, mapDispatch)(withStyles(styles)(ItemOnline));

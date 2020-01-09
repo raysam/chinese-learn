@@ -31,7 +31,8 @@ class List extends Component {
                         component={NavLink}
                         to={`${this.props.match.path}/${lesson.slug}`}
                         activeClassName="active"
-                        newOne={ this.props.listLesson.length === index+1 }
+                        newOne={ this.props.listLesson.length === index+1 } 
+                        new={ (this.props.listLesson.length === index+1) ? "new" : "" }
                     >
                         Bài số {lesson.id}: {lesson.name}
                     </LessonItem>)
@@ -49,12 +50,12 @@ class List extends Component {
             <Fragment>
                 <div className={classes.navList}>
                     <SimpleBar
-                        // style={{ maxHeight: "calc(100vh)" }}
                         forceVisible="y"
                         autoHide="false"
                     >
                         <div className={classes.listLesson}>
                             <LessonItem
+                                new="new"
                                 newOne={true}
                                 component={NavLink}
                                 to={`${url}/${this.state.lastLesson.slug}`}

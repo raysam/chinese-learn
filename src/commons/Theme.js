@@ -4,9 +4,9 @@ const theme = createMuiTheme({
     palette: {
         type: 'light',
         primary: {
-            light: "#06bce5",
-            main: '#36b5b0',
-            dark: '#347f7c',
+            light: "#b2fcff",
+            main: '#06bce5',
+            dark: '#1e90ff',
             contrastText: '#fff'
         },
         secondary: {
@@ -17,14 +17,10 @@ const theme = createMuiTheme({
         }
     },
     color: {
-        greed: '#36b5b0',
-        greedLow: '#9dd8c8',
-        greedLight: '#06bce5',
-        greedDark: '#347f7c',
-        greedSalk: '#48d9f9',
-        red: '#ff2424',
-        redLight: '#f09595',
-        yellowLight: '#fcf5b0'
+        blue: '#3e64ff',
+        lightBlue: '#5edfff',
+        skyBlue: '#b2fcff',
+        whiteBlue: '#ecfcff'
     },
     fonts: {
         size: {
@@ -48,7 +44,9 @@ const theme = createMuiTheme({
         coral: '#ff7f50',
         tomato: '#ff6348',
         limeSoap: '#7bed9f',
+        ufoGreenLight: '#59de90',
         ufoGreen: '#2ed573',
+        ufoGreenDark: '#24b761',
         skyBlue: '#70a1ff',
         clearChill: '#1e90ff',
         saturatedSky: '#5352ed',
@@ -61,6 +59,20 @@ const theme = createMuiTheme({
         cityLight: '#dfe4ea',
         twinkleBlue: '#ced6e0',
         antiFlashWhite: '#f1f2f6'
+    },
+    alertColor: {
+        default: '#e6e6e6',
+        lightGreen: '#edf7ed',
+        lightBlue: '#e8f4fd',
+        lightYellow: '#fff4e5',
+        lightRed: '#fff4e5'
+    },
+    iconColor: {
+        default: '#000000',
+        green: '#4caf50',
+        blue: '#2196f3',
+        yellow: '#ff9800',
+        red: '#f44336'
     }
 });
 

@@ -31,27 +31,53 @@ const styles = theme => ({
         width: "50%",
         textAlign: 'right'
     },
-    actionBar: {
-        width: '100%',
-        maxHeight: 70,
+    timeCount: {
+        width: 'auto',
+        maxHeight: 60,
         position: 'fixed',
         bottom: 0,
         left: 0,
-        right: 0,
-        backgroundColor: '#fafafa',
+        backgroundColor: theme.color.whiteBlue,
         borderTop: '1px solid #a3a3a3',
         padding: '10px 20px',
-        boxShadow: '0px -2px 10px 0px rgb(0,0,0,0.5)'
+        boxShadow: '0px 0px 10px 0px rgb(0,0,0,0.5)',
+        borderTopRightRadius: 10
+    },
+    timeLbl: {
+        display: 'block',
+        fontSize: theme.fonts.size.tn
     },
     timer: {
         display: 'inline-block',
-        lineHeight: '36px',
-        fontSize: 20
+        fontSize: theme.fonts.size.sm
     },
-    rightSide: {
-        float: 'right',
-        "&>*": {
-            marginLeft: 20
+    actionBtn: {
+        position: 'fixed',
+        bottom: 0,
+        right: 0,
+        padding: '10px 15px',
+        '&>*': {
+            position: 'relative',
+            zIndex: 2
+        }
+    },
+    miniPanel: {
+        position: 'absolute !important',
+        zIndex: 1,
+        bottom: 60,
+        right: 17,
+        width: 'auto',
+        transform: 'scaleY(0)',
+        transformOrigin: 'bottom',
+        opacity: 0,
+        transition: 'all 0.1s linear',
+        '&.active': {
+            opacity: 1,
+            transform: 'scaleY(1)',
+        },
+        '& > *': {
+            display: 'flex !important',
+            marginBottom: 10
         }
     },
     listContainer: {
@@ -113,39 +139,7 @@ const styles = theme => ({
     },
     rePosMark: {
         top: 37
-    },
-    infoNote: {
-        display: 'flex',
-        padding: '6px 16px',
-        fontSize: '0.875rem',
-        fontWeight: 400,
-        lineHeight: 1.43,
-        borderRadius: 4,
-        marginTop: 20,
-        letterSpacing: '0.01071em',
-        backgroundColor: theme.colorSet.clearChill
-    },
-    infoIcon: {
-        display: 'flex',
-        opacity: 0.9,
-        padding: '7px 0',
-        fontSize: 22,
-        marginRight: 12,
-    },
-    infoMess: {
-        display: 'flex',
-        padding: '8px 0',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        color: '#fff'
-    },
-    infoTitle: {
-        fontFamily: '"Arial", sans-serif',
-        fontSize: 14,
-        fontWeight: 'bold',
-        lineHeight: 1.5,
-        letterSpacing: 1
-    },
+    }
 });
 
 export default styles;

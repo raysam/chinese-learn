@@ -33,3 +33,21 @@ export const setExamStatusFalse = () => {
         type: types.EXAM_STATUS_FALSE
     }
 }
+
+export const setExamChecked = () => {
+    return {
+        type: types.EXAM_CHECKED
+    }
+}
+
+export const setExamUncheck = () => {
+    return {
+        type: types.EXAM_UNCHECK
+    }
+}
+
+export const setExamScores = () => {
+    return {
+        type: types.EXAM_SCORES
+    }
+}

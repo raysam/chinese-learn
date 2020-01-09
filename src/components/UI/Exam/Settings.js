@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from "react";
+import Alert from '../../commons/Alert/LabelAlert';
 import {
     Step,
     Stepper,
@@ -17,14 +18,15 @@ import {
     Checkbox,
     Grid,
 } from "@material-ui/core";
+import {
+    Bookmark as BookmarkIcon, 
+    BookmarkBorder as BookmarkBorderIcon, 
+    FiberNew as FiberNewIcon, 
+    FiberNewOutlined as FiberNewOutlinedIcon
+} from "@material-ui/icons";
 import { red } from "@material-ui/core/colors";
 import styles from "./ExamCss";
 import { withStyles } from "@material-ui/styles";
-import BookmarkIcon from "@material-ui/icons/Bookmark";
-import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
-import BookmarkBorderIcon from "@material-ui/icons/BookmarkBorder";
-import FiberNewIcon from "@material-ui/icons/FiberNew";
-import FiberNewOutlinedIcon from "@material-ui/icons/FiberNewOutlined";
 import { connect } from "react-redux";
 import * as actions from "../../../actions";
 import config from "../../../constansts/config";
@@ -449,16 +451,7 @@ class Settings extends Component {
                                         ? "Bật"
                                         : "Tắt"}
                                 </Typography>
-                                <div className={classes.infoNote} >
-                                    <div className={classes.infoIcon}>
-                                        <InfoOutlinedIcon style={{color: '#fff'}} fontSize="small" />
-                                    </div>
-                                    <div className={classes.infoMess}>
-                                        <span className={classes.infoTitle}>Chú ý</span>
-                                        <p>Bài kiểm tra là dựa trên ý thức cá nhân, bạn hoàn toàn có thể tra từ điển, dùng google dịch, hoặc các công cụ khác. Bạn càng nghiêm túc thì kết quả phản ánh ra càng chính xác với trình độ thực tế của bạn</p>
-                                    </div>
-                                    
-                                </div>
+                                <Alert mainType="info" title="Chú ý">Bài kiểm tra là dựa trên ý thức cá nhân, bạn hoàn toàn có thể tra từ điển, dùng google dịch, hoặc các công cụ khác. Bạn càng nghiêm túc thì kết quả phản ánh ra càng chính xác với trình độ thực tế của bạn</Alert>
                             </div>
                             <div className={classes.btnArea}>
                                 <div className={classes.btnBackArea}>

@@ -19,7 +19,9 @@ class List extends Component {
     
     componentDidMount() {
         callApi(config.TABLE_UPDATE_DATE).then(resp => {
-            let formatDate = new Date(sheetHelper.getUpdateDate(resp));
+            let t = sheetHelper.getUpdateDate(resp).split(/[- :]/);
+            let d = new Date(t[0], t[1]-1, t[2], t[3], t[4], t[5]);
+            let formatDate = new Date(d);
             this.setState({
                 updateDate: `${formatDate.getDate()}/${formatDate.getMonth()+1}/${formatDate.getFullYear()}`
             });
