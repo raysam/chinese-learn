@@ -32,7 +32,7 @@ class LabelAlert extends Component {
         }
 
         return (
-            <div className={classes.infoNote+((this.props.mainType) ? ` ${this.props.mainType}` : '')}>
+            <div className={classes.infoNote+((this.props.mainType) ? ` ${this.props.mainType}` : '')+((this.props.className) ? ` ${this.props.className}` : '')}>
                 <div className={classes.infoIcon}>
                     {icon}                   
                 </div>

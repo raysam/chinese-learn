@@ -6,7 +6,6 @@ const styles = theme => ({
         fontWeight: 400,
         lineHeight: 1.43,
         borderRadius: 5,
-        marginTop: 20,
         letterSpacing: '0.01071em',
         backgroundColor: theme.alertColor.default,
         '& > $infoIcon > svg': {

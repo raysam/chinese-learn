@@ -8,8 +8,12 @@ import {
     Divider,
     TextField 
 } from "@material-ui/core";
+import {
+    CheckRounded as CheckIcon, 
+    ClearRounded as XIcon
+} from '@material-ui/icons';
 import { connect } from "react-redux";
-import * as actions from "../../../actions";
+// import * as actions from "../../../actions";
 
 class ItemOnline extends Component {
     state = {
@@ -18,34 +22,32 @@ class ItemOnline extends Component {
     }
 
     handleChange = e => {
+        let lstRs = false;
         if (this.props.word === e.target.value || this.props.mword === e.target.value) {
             this.setState({
                 value: e.target.value,
                 mark: true
-            })
+            });
+            lstRs = this.props.wordId
         } else {
             this.setState({
                 value: e.target.value,
                 mark: false
-            })
+            });
+            lstRs = false;
         }
-    }
-
-    componentDidUpdate() {
-        console.log(this.propsexamCheck);
-        // if (examCheck.examCheck) {
-        //     if (this.state.mark) {
-        //         this.props.onCountWord();
-        //     }
-        // }
+        this.props.onCheckWord(lstRs);
     }
 
     render() {
-        const { classes, examStatus } = this.props;
+        const { classes, examStatus, examCheck } = this.props;
+
+        console.log(examCheck)
 
         return (
             <Card className={classes.testCard + ((examStatus) ? ' '+classes.enTest : '')}>
                 <CardContent className={classes.cardContent}>
+                    <div className={classes.checkT}>{(examCheck) ? ((this.state.mark) ? <CheckIcon fontSize="small" style={{color: '#7bed9f'}} /> : <XIcon fontSize="small" style={{color: '#ff4757'}} />) : ''}</div>
                     {
                         (examStatus) ?
                         (<Fragment>
@@ -58,6 +60,7 @@ class ItemOnline extends Component {
                             <Divider className={classes.dvWord} />
                             <Typography className={(this.state.mark) ? classes.correctWord : classes.errorWord} component="p">
                                 Bạn trả lời: {(this.state.value === "") ? "để trống" : this.state.value}
+                                
                             </Typography>
                             <Divider className={classes.dvWord} />
                         </Fragment>) :
@@ -82,12 +85,4 @@ const mapState = state => {
     };
 };
 
-const mapDispatch = (dispatch, props) => {
-    return {
-        onCountWord: () => {
-            dispatch(actions.setExamScores());
-        },
-    };
-};
-
-export default connect(mapState, mapDispatch)(withStyles(styles)(ItemOnline));
+export default connect(mapState, null)(withStyles(styles)(ItemOnline));

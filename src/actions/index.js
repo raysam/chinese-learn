@@ -46,8 +46,9 @@ export const setExamUncheck = () => {
     }
 }
 
-export const setExamScores = () => {
+export const setExamScores = wordSet => {
     return {
-        type: types.EXAM_SCORES
+        type: types.EXAM_SCORES,
+        wordSet
     }
 }

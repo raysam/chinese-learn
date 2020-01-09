@@ -17,6 +17,9 @@ const styles = theme => ({
     labelSet: {
         marginBottom: 10
     },
+    marT: {
+        marginTop: 20
+    },
     titleStep: {
         marginBottom: 20
     },
@@ -89,6 +92,12 @@ const styles = theme => ({
     },
     cardContent: {
         padding: "0 !important",
+        position: 'relative'
+    },
+    checkT: {
+        position: 'absolute',
+        top: 0,
+        right: 0
     },
     pinyin: {
         fontFamily: "Tahoma, serif",
@@ -139,6 +148,9 @@ const styles = theme => ({
     },
     rePosMark: {
         top: 37
+    },
+    resultScores: {
+        marginBottom: 20
     }
 });
 

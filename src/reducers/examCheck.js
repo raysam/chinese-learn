@@ -1,25 +1,19 @@
 import * as types from '../constansts/ActiveTypes';
 
-
-var defaultState = {
-    examCheck: false,
-    examCorrentCount: 0
-};
+var defaultState = false
 
 var setCheck = (state = defaultState, action) => {
     switch(action.type) {
         case types.EXAM_CHECKED:
-            state.examCheck = true
-            return state
+            state = true
+            break
         case types.EXAM_UNCHECK:
-            state.examCheck = false
-            return state
-        case types.EXAM_SCORES:
-            state.examCorrentCount = state.examCorrentCount + 1
-            return state
+            state = false
+            break
         default:
-            return state
+            break
     }
+    return state;
 };
 
 export default setCheck;

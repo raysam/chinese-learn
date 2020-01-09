@@ -48,9 +48,8 @@ class ActionButton extends Component {
         this.props.onSetStatus();
     }
 
-    checExam = () => {
+    checkEndExam = () => {
         this.props.onCheckExam();
-        console.log(this.props.examCheck);
     }
     
     handleClickOpen = () => {
@@ -88,7 +87,7 @@ class ActionButton extends Component {
     }
     
     render() {
-        const { classes, examStatus, examSettings } = this.props;
+        const { classes, examStatus, examSettings, examCheck } = this.props;
 
         return (
             <div className={classes.actionBtn}>
@@ -112,12 +111,12 @@ class ActionButton extends Component {
                                 <Dialog
                                     open={this.state.open}
                                     onClose={this.handleClose}
-                                    aria-labelledby="alert-dialog-title"
-                                    aria-describedby="alert-dialog-description"
+                                    aria-labelledby="end-title"
+                                    aria-describedby="end-description"
                                 >
-                                    <DialogTitle id="alert-dialog-title">{"Bạn muốn nộp bài không ?"}</DialogTitle>
+                                    <DialogTitle id="end-title">{"Bạn muốn nộp bài không ?"}</DialogTitle>
                                     <DialogContent>
-                                        <DialogContentText id="alert-dialog-description">
+                                        <DialogContentText id="end-description">
                                             Sau khi nộp bài thì không thể làm tiếp bài. bạn có chắc chắn nộp bài không ?
                                         </DialogContentText>
                                     </DialogContent>
@@ -135,7 +134,7 @@ class ActionButton extends Component {
                         (
                             <Fragment>
                                 {
-                                    (examSettings.settings.examOnline) ?
+                                    (examSettings.settings.examOnline && !examCheck) ?
                                     (<Fragment>
                                         <Tooltip title="Chấm điểm" placement="left">
                                             <CheckButton size="small" aria-label="Chấm điểm" onClick={this.handleCheckOpen}>
@@ -145,12 +144,12 @@ class ActionButton extends Component {
                                         <Dialog
                                             open={this.state.openCheck}
                                             onClose={this.handleCheckClose}
-                                            aria-labelledby="alert-dialog-title"
-                                            aria-describedby="alert-dialog-description"
+                                            aria-labelledby="check-title"
+                                            aria-describedby="check-description"
                                         >
-                                            <DialogTitle id="alert-dialog-title">{"Quy tác chấm điểm như sau:"}</DialogTitle>
+                                            <DialogTitle id="check-title">{"Quy tác chấm điểm như sau:"}</DialogTitle>
                                             <DialogContent>
-                                                <DialogContentText id="alert-dialog-description">
+                                                <DialogContentText id="check-description">
                                                     Điểm cho 1 câu = tổng số câu / 100.<br/>
                                                     100 điểm là cao nhất, 0 điểm là thấp nhất.<br/>
                                                     Do cấu hình là bạn tự chọn nên việc chia điểm sẽ có số lẻ.<br/>
@@ -161,7 +160,7 @@ class ActionButton extends Component {
                                                 <Button onClick={this.handleCheckClose} color="default">
                                                     Hủy bỏ
                                                 </Button>
-                                                <Button onClick={this.checExam} color="primary" autoFocus>
+                                                <Button onClick={this.checkEndExam} color="primary" autoFocus>
                                                     Xác nhận
                                                 </Button>
                                             </DialogActions>
