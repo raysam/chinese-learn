@@ -41,13 +41,13 @@ class ItemOnline extends Component {
     }
 
     render() {
-        const { classes } = this.props;
+        const { classes, examStatus } = this.props;
 
         return (
-            <Card className={classes.testCard + ((this.props.examStatus) ? ' '+classes.enTest : '')}>
+            <Card className={classes.testCard + ((examStatus) ? ' '+classes.enTest : '')}>
                 <CardContent className={classes.cardContent}>
                     {
-                        (this.props.examStatus) ?
+                        (examStatus) ?
                         (<Fragment>
                             <Typography className={classes.pinyin} component="label">
                                 {this.props.pinyin}
