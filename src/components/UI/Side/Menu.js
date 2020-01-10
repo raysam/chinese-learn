@@ -1,9 +1,12 @@
 import React from "react";
 import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
-import HomeIcon from "@material-ui/icons/Home";
-import SpellcheckIcon from "@material-ui/icons/Spellcheck";
-import LocalLibraryIcon from "@material-ui/icons/LocalLibrary";
+import {
+    Menu as MenuIcon, 
+    Home as HomeIcon, 
+    Spellcheck as SpellcheckIcon, 
+    LocalLibrary as LocalLibraryIcon, 
+    ContactMail as ContactMailIcon
+} from "@material-ui/icons";
 import { withStyles, Drawer } from "@material-ui/core";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
@@ -54,6 +57,12 @@ class Menu extends React.Component {
                 label: "Kiểm Tra",
                 icon: <SpellcheckIcon className={classes.menuItemColorTomato} />,
                 color: classes.menuItemColorTomato
+            },
+            {
+                path: "/lienhe",
+                label: "Liên Hệ",
+                icon: <ContactMailIcon className={classes.menuItemColorGolden} />,
+                color: classes.menuItemColorGolden
             }
         ];
 

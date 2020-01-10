@@ -3,6 +3,7 @@ import MainHome from "./Home/Main";
 import SelectExam from "./Exam/Select";
 import StartExam from "./Exam/StartExam";
 import LearnLesson from "./Learn/MainLearn";
+import Contact from "./Contact/Main";
 import NotFound from "./404/Main";
 
 
@@ -26,6 +27,11 @@ const routes = [
         path: "/learn",
         exact: false,
         main: (match) => <LearnLesson match={match} />
+    },
+    {
+        path: "/lienhe",
+        exact: false,
+        main: () => <Contact />
     },
     {
         path: "",
