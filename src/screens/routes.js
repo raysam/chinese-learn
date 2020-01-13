@@ -4,6 +4,7 @@ import SelectExam from "./Exam/Select";
 import StartExam from "./Exam/StartExam";
 import LearnLesson from "./Learn/MainLearn";
 import Contact from "./Contact/Main";
+import Plus from "./LearnPlus/Main";
 import NotFound from "./404/Main";
 
 
@@ -32,6 +33,11 @@ const routes = [
         path: "/lienhe",
         exact: false,
         main: () => <Contact />
+    },
+    {
+        path: "/learnplus",
+        exact: false,
+        main: () => <Plus />
     },
     {
         path: "",

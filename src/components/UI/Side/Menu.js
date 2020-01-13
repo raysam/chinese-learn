@@ -5,7 +5,8 @@ import {
     Home as HomeIcon, 
     Spellcheck as SpellcheckIcon, 
     LocalLibrary as LocalLibraryIcon, 
-    ContactMail as ContactMailIcon
+    ContactMail as ContactMailIcon,
+    Filter9Plus as Filter9PlusIcon
 } from "@material-ui/icons";
 import { withStyles, Drawer } from "@material-ui/core";
 import List from "@material-ui/core/List";
@@ -48,19 +49,25 @@ class Menu extends React.Component {
             },
             {
                 path: "/learn",
-                label: "Học Tập",
+                label: "Học tập",
                 icon: <LocalLibraryIcon className={classes.menuItemColorOrange} />,
                 color: classes.menuItemColorOrange
             },
             {
+                path: "/learnplus",
+                label: "Học thêm",
+                icon: <Filter9PlusIcon className={classes.menuItemColorDBlue} />,
+                color: classes.menuItemColorDBlue
+            },
+            {
                 path: "/exam",
-                label: "Kiểm Tra",
+                label: "Kiểm tra",
                 icon: <SpellcheckIcon className={classes.menuItemColorTomato} />,
                 color: classes.menuItemColorTomato
             },
             {
                 path: "/lienhe",
-                label: "Liên Hệ",
+                label: "Liên hệ",
                 icon: <ContactMailIcon className={classes.menuItemColorGolden} />,
                 color: classes.menuItemColorGolden
             }

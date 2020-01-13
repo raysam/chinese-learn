@@ -16,6 +16,9 @@ const styles = theme => ({
 	},
 	menuItemColorGolden: {
 		color: theme.colorSet.goldenSand
+	},
+	menuItemColorDBlue: {
+		color: theme.colorSet.prestigeBlue
 	}
 });
 
