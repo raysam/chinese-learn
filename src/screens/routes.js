@@ -37,7 +37,7 @@ const routes = [
     {
         path: "/learnplus",
         exact: false,
-        main: () => <Plus />
+        main: (match) => <Plus match={match} />
     },
     {
         path: "",
