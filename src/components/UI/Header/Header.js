@@ -5,8 +5,16 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 // import UserButton from "../User/Button";
 import SideMenu from "../Side/Menu";
+import { connect } from 'react-redux';
+import * as actions from '../../../actions';
+
 
 class Header extends React.Component {
+    
+    componentDidMount() {
+        
+    }
+
     render() {
         const { classes, location } = this.props;
         const titleList = [
@@ -48,4 +56,18 @@ class Header extends React.Component {
     }
 }
 
-export default withStyles(styles)(Header);
+const mapState = state => {
+    return {
+        listLesson: state.allLession,
+    }
+}
+
+const mapDispatch = (dispatch, props) => {
+    return {
+        onSetLesson: lesson => {
+            dispatch(actions.setAllLesson(lesson));
+        }
+    }
+}
+
+export default connect(mapState, mapDispatch)(withStyles(styles)(Header));
